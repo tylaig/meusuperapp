@@ -16,7 +16,9 @@ import {
   Smartphone,
   Building,
   FileText,
-  Target
+  Target,
+  Calendar,
+  RefreshCw
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import DemoModeIndicator from '../common/DemoModeIndicator';
@@ -35,11 +37,15 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: BarChart3, current: currentPage === 'dashboard' },
     { name: 'CRM & Vendas', href: '/crm', icon: Target, current: currentPage === 'crm' },
+    { name: 'Agenda', href: '/agenda', icon: Calendar, current: currentPage === 'agenda' },
+    { name: 'Follow-up', href: '/follow-up', icon: RefreshCw, current: currentPage === 'follow-up' },
+    { name: '---', href: '#', icon: null, current: false }, // Divider
     { name: 'Servidores', href: '/servers', icon: Server, current: currentPage === 'servers' },
     { name: 'Conexões', href: '/connections', icon: Smartphone, current: currentPage === 'connections' },
     { name: 'Conversas', href: '/conversations', icon: MessageSquare, current: currentPage === 'conversations' },
     { name: 'Analytics', href: '/analytics', icon: BarChart3, current: currentPage === 'analytics' },
     { name: 'Logs', href: '/logs', icon: FileText, current: currentPage === 'logs' },
+    { name: '---', href: '#', icon: null, current: false }, // Divider
     { name: 'Organização', href: '/organization', icon: Building, current: currentPage === 'organization' },
     { name: 'Assinatura', href: '/subscription', icon: CreditCard, current: currentPage === 'subscription' },
     { name: 'Configurações', href: '/settings', icon: Settings, current: currentPage === 'settings' },
@@ -92,20 +98,26 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
             </button>
           </div>
           <nav className="p-4 space-y-2">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
-                  item.current
-                    ? 'bg-[#FF7A00] text-white shadow-lg'
-                    : 'text-gray-300 hover:bg-white/10 hover:text-white'
-                }`}
-              >
-                <item.icon className="w-5 h-5" />
-                <span className="font-medium">{item.name}</span>
-              </a>
-            ))}
+            {navigation.map((item) => {
+              if (item.name === '---') {
+                return <div key={item.href} className="h-px bg-white/10 my-4"></div>;
+              }
+              
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
+                    item.current
+                      ? 'bg-[#FF7A00] text-white shadow-lg'
+                      : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  {item.icon && <item.icon className="w-5 h-5" />}
+                  <span className="font-medium">{item.name}</span>
+                </a>
+              );
+            })}
           </nav>
         </div>
       </div>
@@ -120,20 +132,26 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
             <span className="text-xl font-bold text-white">meusuper.app</span>
           </div>
           <nav className="p-6 space-y-2">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
-                  item.current
-                    ? 'bg-[#FF7A00] text-white shadow-lg'
-                    : 'text-gray-300 hover:bg-white/10 hover:text-white'
-                }`}
-              >
-                <item.icon className="w-5 h-5" />
-                <span className="font-medium">{item.name}</span>
-              </a>
-            ))}
+            {navigation.map((item) => {
+              if (item.name === '---') {
+                return <div key={item.href} className="h-px bg-white/10 my-4"></div>;
+              }
+              
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
+                    item.current
+                      ? 'bg-[#FF7A00] text-white shadow-lg'
+                      : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  {item.icon && <item.icon className="w-5 h-5" />}
+                  <span className="font-medium">{item.name}</span>
+                </a>
+              );
+            })}
           </nav>
         </div>
       </div>
