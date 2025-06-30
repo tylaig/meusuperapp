@@ -29,7 +29,12 @@ import {
   ExternalLink,
   Zap,
   Shield,
-  Database
+  Database,
+  Bot,
+  Server,
+  Link,
+  User,
+  Lock
 } from 'lucide-react';
 import DashboardLayout from './DashboardLayout';
 import DemoAlert from '../common/DemoAlert';
@@ -39,18 +44,11 @@ import { WhatsAppConnection } from '../../types';
 interface ChannelIntegration {
   id: string;
   name: string;
-  type: 'whatsapp' | 'instagram' | 'facebook' | 'telegram' | 'email' | 'sms' | 'webhook';
+  type: 'whatsapp-qr' | 'whatsapp-business' | 'instagram' | 'facebook' | 'telegram' | 'email' | 'sms' | 'webhook';
   icon: React.ElementType;
-  status: 'connected' | 'disconnected' | 'error' | 'pending';
+  status: 'connected' | 'disconnected' | 'error' | 'pending' | 'connecting';
   description: string;
-  requiresApi: boolean;
-  requiresWebhook: boolean;
-  config?: {
-    apiKey?: string;
-    webhookUrl?: string;
-    phoneNumber?: string;
-    accountId?: string;
-  };
+  config?: any;
   metrics?: {
     messagesReceived: number;
     messagesSent: number;
@@ -68,18 +66,13 @@ const ConnectionsPage: React.FC = () => {
   const [showQRCode, setShowQRCode] = useState<string | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showConfigModal, setShowConfigModal] = useState<string | null>(null);
-  const [configForm, setConfigForm] = useState({
-    apiKey: '',
-    webhookUrl: '',
-    phoneNumber: '',
-    accountId: ''
-  });
-  const [showApiKey, setShowApiKey] = useState(false);
+  const [configForm, setConfigForm] = useState<any>({});
+  const [showSecrets, setShowSecrets] = useState<{[key: string]: boolean}>({});
   
   const { showDemoAlert, demoAlertConfig, triggerDemoAlert, closeDemoAlert } = useDemoMode();
 
   useEffect(() => {
-    // Mock data for WhatsApp connections
+    // Mock data for WhatsApp connections (QR Code)
     setConnections([
       {
         id: '1',
@@ -131,16 +124,16 @@ const ConnectionsPage: React.FC = () => {
       {
         id: 'whatsapp-business',
         name: 'WhatsApp Business API',
-        type: 'whatsapp',
+        type: 'whatsapp-business',
         icon: MessageSquare,
         status: 'connected',
         description: 'API oficial do WhatsApp para empresas',
-        requiresApi: true,
-        requiresWebhook: true,
         config: {
-          apiKey: 'wa_live_1234567890abcdef',
+          phoneNumberId: '123456789012345',
+          accessToken: 'EAAG...hidden',
+          webhookVerifyToken: 'verify_token_123',
           webhookUrl: 'https://api.meusuper.app/webhook/whatsapp',
-          phoneNumber: '+55 11 99999-0001'
+          businessAccountId: '987654321098765'
         },
         metrics: {
           messagesReceived: 2139,
@@ -155,12 +148,13 @@ const ConnectionsPage: React.FC = () => {
         icon: Instagram,
         status: 'connected',
         description: 'Mensagens diretas do Instagram',
-        requiresApi: true,
-        requiresWebhook: true,
         config: {
-          apiKey: 'ig_live_abcdef1234567890',
+          pageId: '123456789',
+          accessToken: 'IGQVJ...hidden',
+          appId: '987654321',
+          appSecret: 'secret...hidden',
           webhookUrl: 'https://api.meusuper.app/webhook/instagram',
-          accountId: '@meusuper.app'
+          verifyToken: 'ig_verify_token'
         },
         metrics: {
           messagesReceived: 856,
@@ -175,12 +169,32 @@ const ConnectionsPage: React.FC = () => {
         icon: Facebook,
         status: 'disconnected',
         description: 'Mensagens do Facebook Messenger',
-        requiresApi: true,
-        requiresWebhook: true,
         config: {
-          apiKey: '',
+          pageId: '',
+          pageAccessToken: '',
+          appId: '',
+          appSecret: '',
           webhookUrl: '',
-          accountId: ''
+          verifyToken: ''
+        }
+      },
+      {
+        id: 'telegram-bot',
+        name: 'Telegram Bot',
+        type: 'telegram',
+        icon: Send,
+        status: 'connected',
+        description: 'Bot do Telegram para mensagens',
+        config: {
+          botToken: '123456789:ABCD...hidden',
+          botUsername: '@meusuper_bot',
+          webhookUrl: 'https://api.meusuper.app/webhook/telegram',
+          allowedUpdates: ['message', 'callback_query']
+        },
+        metrics: {
+          messagesReceived: 423,
+          messagesSent: 567,
+          lastActivity: new Date(Date.now() - 8 * 60 * 1000).toISOString()
         }
       },
       {
@@ -190,14 +204,17 @@ const ConnectionsPage: React.FC = () => {
         icon: Mail,
         status: 'connected',
         description: 'Integração via SMTP para emails',
-        requiresApi: true,
-        requiresWebhook: false,
         config: {
-          apiKey: 'smtp_key_xyz789',
-          webhookUrl: 'https://api.meusuper.app/webhook/email'
+          smtpHost: 'smtp.gmail.com',
+          smtpPort: '587',
+          smtpUser: 'contato@meusuper.app',
+          smtpPassword: 'password...hidden',
+          fromName: 'MeuSuper App',
+          fromEmail: 'contato@meusuper.app',
+          encryption: 'tls'
         },
         metrics: {
-          messagesReceived: 423,
+          messagesReceived: 234,
           messagesSent: 789,
           lastActivity: new Date(Date.now() - 45 * 60 * 1000).toISOString()
         }
@@ -209,12 +226,12 @@ const ConnectionsPage: React.FC = () => {
         icon: Phone,
         status: 'error',
         description: 'Mensagens SMS via Twilio API',
-        requiresApi: true,
-        requiresWebhook: true,
         config: {
-          apiKey: 'twilio_key_error',
+          accountSid: 'AC1234567890abcdef',
+          authToken: 'auth...hidden',
+          fromNumber: '+15551234567',
           webhookUrl: 'https://api.meusuper.app/webhook/sms',
-          phoneNumber: '+55 11 99999-9999'
+          statusCallback: 'https://api.meusuper.app/callback/sms'
         }
       },
       {
@@ -224,14 +241,93 @@ const ConnectionsPage: React.FC = () => {
         icon: Webhook,
         status: 'pending',
         description: 'Integração customizada via webhook',
-        requiresApi: false,
-        requiresWebhook: true,
         config: {
-          webhookUrl: 'https://meusite.com/webhook'
+          webhookUrl: 'https://meusite.com/webhook',
+          method: 'POST',
+          headers: '{"Authorization": "Bearer token123"}',
+          secretKey: 'webhook_secret_key'
         }
       }
     ]);
   }, []);
+
+  const getChannelConfig = (type: string) => {
+    const configs = {
+      'whatsapp-business': {
+        fields: [
+          { key: 'phoneNumberId', label: 'Phone Number ID', type: 'text', required: true, placeholder: '123456789012345' },
+          { key: 'accessToken', label: 'Access Token', type: 'password', required: true, placeholder: 'EAAG...' },
+          { key: 'businessAccountId', label: 'Business Account ID', type: 'text', required: true, placeholder: '987654321098765' },
+          { key: 'webhookUrl', label: 'Webhook URL', type: 'url', required: true, placeholder: 'https://api.meusuper.app/webhook/whatsapp' },
+          { key: 'webhookVerifyToken', label: 'Webhook Verify Token', type: 'password', required: true, placeholder: 'verify_token_123' }
+        ],
+        docs: 'https://developers.facebook.com/docs/whatsapp/cloud-api'
+      },
+      'instagram': {
+        fields: [
+          { key: 'pageId', label: 'Page ID', type: 'text', required: true, placeholder: '123456789' },
+          { key: 'accessToken', label: 'Page Access Token', type: 'password', required: true, placeholder: 'IGQVJ...' },
+          { key: 'appId', label: 'App ID', type: 'text', required: true, placeholder: '987654321' },
+          { key: 'appSecret', label: 'App Secret', type: 'password', required: true, placeholder: 'app_secret_key' },
+          { key: 'webhookUrl', label: 'Webhook URL', type: 'url', required: true, placeholder: 'https://api.meusuper.app/webhook/instagram' },
+          { key: 'verifyToken', label: 'Verify Token', type: 'password', required: true, placeholder: 'ig_verify_token' }
+        ],
+        docs: 'https://developers.facebook.com/docs/instagram-api'
+      },
+      'facebook': {
+        fields: [
+          { key: 'pageId', label: 'Page ID', type: 'text', required: true, placeholder: '123456789' },
+          { key: 'pageAccessToken', label: 'Page Access Token', type: 'password', required: true, placeholder: 'EAAG...' },
+          { key: 'appId', label: 'App ID', type: 'text', required: true, placeholder: '987654321' },
+          { key: 'appSecret', label: 'App Secret', type: 'password', required: true, placeholder: 'app_secret_key' },
+          { key: 'webhookUrl', label: 'Webhook URL', type: 'url', required: true, placeholder: 'https://api.meusuper.app/webhook/facebook' },
+          { key: 'verifyToken', label: 'Verify Token', type: 'password', required: true, placeholder: 'fb_verify_token' }
+        ],
+        docs: 'https://developers.facebook.com/docs/messenger-platform'
+      },
+      'telegram': {
+        fields: [
+          { key: 'botToken', label: 'Bot Token', type: 'password', required: true, placeholder: '123456789:ABCD...' },
+          { key: 'botUsername', label: 'Bot Username', type: 'text', required: true, placeholder: '@meubot' },
+          { key: 'webhookUrl', label: 'Webhook URL', type: 'url', required: true, placeholder: 'https://api.meusuper.app/webhook/telegram' },
+          { key: 'allowedUpdates', label: 'Allowed Updates', type: 'text', required: false, placeholder: 'message,callback_query' }
+        ],
+        docs: 'https://core.telegram.org/bots/api'
+      },
+      'email': {
+        fields: [
+          { key: 'smtpHost', label: 'SMTP Host', type: 'text', required: true, placeholder: 'smtp.gmail.com' },
+          { key: 'smtpPort', label: 'SMTP Port', type: 'number', required: true, placeholder: '587' },
+          { key: 'smtpUser', label: 'SMTP User', type: 'email', required: true, placeholder: 'user@gmail.com' },
+          { key: 'smtpPassword', label: 'SMTP Password', type: 'password', required: true, placeholder: 'app_password' },
+          { key: 'fromName', label: 'From Name', type: 'text', required: true, placeholder: 'Minha Empresa' },
+          { key: 'fromEmail', label: 'From Email', type: 'email', required: true, placeholder: 'contato@empresa.com' },
+          { key: 'encryption', label: 'Encryption', type: 'select', required: true, options: ['tls', 'ssl', 'none'] }
+        ],
+        docs: 'https://nodemailer.com/smtp/'
+      },
+      'sms': {
+        fields: [
+          { key: 'accountSid', label: 'Account SID', type: 'text', required: true, placeholder: 'AC1234567890abcdef' },
+          { key: 'authToken', label: 'Auth Token', type: 'password', required: true, placeholder: 'auth_token_here' },
+          { key: 'fromNumber', label: 'From Number', type: 'tel', required: true, placeholder: '+15551234567' },
+          { key: 'webhookUrl', label: 'Webhook URL', type: 'url', required: false, placeholder: 'https://api.meusuper.app/webhook/sms' },
+          { key: 'statusCallback', label: 'Status Callback URL', type: 'url', required: false, placeholder: 'https://api.meusuper.app/callback/sms' }
+        ],
+        docs: 'https://www.twilio.com/docs/sms'
+      },
+      'webhook': {
+        fields: [
+          { key: 'webhookUrl', label: 'Webhook URL', type: 'url', required: true, placeholder: 'https://meusite.com/webhook' },
+          { key: 'method', label: 'HTTP Method', type: 'select', required: true, options: ['POST', 'GET', 'PUT', 'PATCH'] },
+          { key: 'headers', label: 'Headers (JSON)', type: 'textarea', required: false, placeholder: '{"Authorization": "Bearer token"}' },
+          { key: 'secretKey', label: 'Secret Key', type: 'password', required: false, placeholder: 'webhook_secret_key' }
+        ],
+        docs: 'https://docs.meusuper.app/webhooks'
+      }
+    };
+    return configs[type as keyof typeof configs] || { fields: [], docs: '' };
+  };
 
   const refreshConnections = async () => {
     setIsLoading(true);
@@ -243,7 +339,7 @@ const ConnectionsPage: React.FC = () => {
     const actions = {
       'create-connection': {
         title: 'Criar Nova Conexão',
-        message: 'A criação de novas conexões WhatsApp requer configuração avançada de servidores e autenticação. Na versão completa, você pode criar conexões ilimitadas com setup automático.'
+        message: 'A criação de novas conexões requer configuração avançada de servidores e autenticação. Na versão completa, você pode criar conexões ilimitadas com setup automático.'
       },
       'delete-connection': {
         title: 'Excluir Conexão',
@@ -276,12 +372,7 @@ const ConnectionsPage: React.FC = () => {
   const handleConfigureIntegration = (integrationId: string) => {
     const integration = integrations.find(i => i.id === integrationId);
     if (integration) {
-      setConfigForm({
-        apiKey: integration.config?.apiKey || '',
-        webhookUrl: integration.config?.webhookUrl || '',
-        phoneNumber: integration.config?.phoneNumber || '',
-        accountId: integration.config?.accountId || ''
-      });
+      setConfigForm(integration.config || {});
       setShowConfigModal(integrationId);
     }
   };
@@ -303,7 +394,7 @@ const ConnectionsPage: React.FC = () => {
     
     setIsLoading(false);
     setShowConfigModal(null);
-    setConfigForm({ apiKey: '', webhookUrl: '', phoneNumber: '', accountId: '' });
+    setConfigForm({});
   };
 
   const handleTestConnection = async (integrationId: string) => {
@@ -331,6 +422,13 @@ const ConnectionsPage: React.FC = () => {
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     alert('📋 Copiado para a área de transferência!');
+  };
+
+  const toggleSecretVisibility = (fieldKey: string) => {
+    setShowSecrets(prev => ({
+      ...prev,
+      [fieldKey]: !prev[fieldKey]
+    }));
   };
 
   const getStatusIcon = (status: string) => {
@@ -388,6 +486,9 @@ const ConnectionsPage: React.FC = () => {
     sum + (integration.metrics?.messagesReceived || 0) + (integration.metrics?.messagesSent || 0), 0
   );
   const errorCount = integrations.filter(i => i.status === 'error').length;
+
+  const currentIntegration = integrations.find(i => i.id === showConfigModal);
+  const channelConfig = currentIntegration ? getChannelConfig(currentIntegration.type) : { fields: [], docs: '' };
 
   return (
     <DashboardLayout currentPage="connections">
@@ -532,36 +633,19 @@ const ConnectionsPage: React.FC = () => {
 
                 {/* Configuration Status */}
                 <div className="space-y-2 mb-4">
-                  {integration.requiresApi && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-300 text-sm">API Key</span>
-                      <div className="flex items-center space-x-2">
-                        {integration.config?.apiKey ? (
-                          <CheckCircle className="w-4 h-4 text-green-500" />
-                        ) : (
-                          <AlertTriangle className="w-4 h-4 text-yellow-500" />
-                        )}
-                        <span className="text-xs text-gray-400">
-                          {integration.config?.apiKey ? 'Configurado' : 'Pendente'}
-                        </span>
-                      </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300 text-sm">Configuração</span>
+                    <div className="flex items-center space-x-2">
+                      {integration.config && Object.keys(integration.config).length > 0 ? (
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                      ) : (
+                        <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                      )}
+                      <span className="text-xs text-gray-400">
+                        {integration.config && Object.keys(integration.config).length > 0 ? 'Configurado' : 'Pendente'}
+                      </span>
                     </div>
-                  )}
-                  {integration.requiresWebhook && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-300 text-sm">Webhook</span>
-                      <div className="flex items-center space-x-2">
-                        {integration.config?.webhookUrl ? (
-                          <CheckCircle className="w-4 h-4 text-green-500" />
-                        ) : (
-                          <AlertTriangle className="w-4 h-4 text-yellow-500" />
-                        )}
-                        <span className="text-xs text-gray-400">
-                          {integration.config?.webhookUrl ? 'Configurado' : 'Pendente'}
-                        </span>
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </div>
 
                 {/* Action Buttons */}
@@ -596,10 +680,10 @@ const ConnectionsPage: React.FC = () => {
           </div>
         </div>
 
-        {/* WhatsApp Connections */}
+        {/* WhatsApp QR Code Connections */}
         <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-bold text-white">Conexões WhatsApp</h3>
+            <h3 className="text-xl font-bold text-white">Conexões WhatsApp (QR Code)</h3>
             <button
               onClick={() => handleAdvancedAction('create-connection')}
               className="flex items-center space-x-2 bg-[#FF7A00] hover:bg-[#FF9500] text-white px-4 py-2 rounded-lg transition-colors duration-300"
@@ -733,123 +817,155 @@ const ConnectionsPage: React.FC = () => {
         </div>
 
         {/* Configuration Modal */}
-        {showConfigModal && (
+        {showConfigModal && currentIntegration && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 w-full max-w-2xl">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-bold text-white">Configurar Integração</h3>
-                <button
-                  onClick={() => setShowConfigModal(null)}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  ✕
-                </button>
-              </div>
-
-              <div className="space-y-6">
-                {/* API Key */}
-                <div>
-                  <label className="block text-white font-semibold mb-2">API Key</label>
-                  <div className="relative">
-                    <input
-                      type={showApiKey ? 'text' : 'password'}
-                      value={configForm.apiKey}
-                      onChange={(e) => setConfigForm(prev => ({ ...prev, apiKey: e.target.value }))}
-                      placeholder="Insira sua API Key"
-                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 pr-20 text-white placeholder-gray-400 focus:border-[#FF7A00] focus:outline-none transition-colors duration-300"
-                    />
-                    <div className="absolute right-2 top-1/2 -translate-y-1/2 flex space-x-1">
-                      <button
-                        onClick={() => setShowApiKey(!showApiKey)}
-                        className="text-gray-400 hover:text-white transition-colors p-1"
-                      >
-                        {showApiKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                      </button>
-                      <button
-                        onClick={() => copyToClipboard(configForm.apiKey)}
-                        className="text-gray-400 hover:text-white transition-colors p-1"
-                      >
-                        <Copy className="w-4 h-4" />
-                      </button>
-                    </div>
+                <div className="flex items-center space-x-3">
+                  <currentIntegration.icon className="w-8 h-8 text-[#FF7A00]" />
+                  <div>
+                    <h3 className="text-xl font-bold text-white">Configurar {currentIntegration.name}</h3>
+                    <p className="text-gray-400 text-sm">{currentIntegration.description}</p>
                   </div>
                 </div>
-
-                {/* Webhook URL */}
-                <div>
-                  <label className="block text-white font-semibold mb-2">Webhook URL</label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={configForm.webhookUrl}
-                      onChange={(e) => setConfigForm(prev => ({ ...prev, webhookUrl: e.target.value }))}
-                      placeholder="https://api.meusuper.app/webhook/..."
-                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 pr-12 text-white placeholder-gray-400 focus:border-[#FF7A00] focus:outline-none transition-colors duration-300"
-                    />
-                    <button
-                      onClick={() => copyToClipboard(configForm.webhookUrl)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                <div className="flex items-center space-x-2">
+                  {channelConfig.docs && (
+                    <a
+                      href={channelConfig.docs}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#FF7A00] hover:text-[#FF9500] transition-colors"
                     >
-                      <Copy className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Phone Number */}
-                <div>
-                  <label className="block text-white font-semibold mb-2">Número de Telefone</label>
-                  <input
-                    type="text"
-                    value={configForm.phoneNumber}
-                    onChange={(e) => setConfigForm(prev => ({ ...prev, phoneNumber: e.target.value }))}
-                    placeholder="+55 11 99999-9999"
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-[#FF7A00] focus:outline-none transition-colors duration-300"
-                  />
-                </div>
-
-                {/* Account ID */}
-                <div>
-                  <label className="block text-white font-semibold mb-2">Account ID</label>
-                  <input
-                    type="text"
-                    value={configForm.accountId}
-                    onChange={(e) => setConfigForm(prev => ({ ...prev, accountId: e.target.value }))}
-                    placeholder="@username ou ID da conta"
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-[#FF7A00] focus:outline-none transition-colors duration-300"
-                  />
-                </div>
-
-                {/* Security Notice */}
-                <div className="bg-blue-500/20 border border-blue-500/30 rounded-lg p-4">
-                  <div className="flex items-start space-x-3">
-                    <Shield className="w-5 h-5 text-blue-400 mt-0.5" />
-                    <div>
-                      <div className="text-blue-300 font-semibold">Segurança</div>
-                      <div className="text-blue-200 text-sm">Suas credenciais são criptografadas e armazenadas com segurança. Nunca compartilhamos suas informações.</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex space-x-3">
+                      <ExternalLink className="w-5 h-5" />
+                    </a>
+                  )}
                   <button
                     onClick={() => setShowConfigModal(null)}
-                    className="flex-1 bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-lg transition-colors duration-300"
+                    className="text-gray-400 hover:text-white transition-colors"
                   >
-                    Cancelar
-                  </button>
-                  <button
-                    onClick={handleSaveConfig}
-                    disabled={isLoading}
-                    className="flex-1 bg-[#FF7A00] hover:bg-[#FF9500] text-white px-4 py-3 rounded-lg transition-colors duration-300 disabled:opacity-50 flex items-center justify-center"
-                  >
-                    {isLoading ? (
-                      <RefreshCw className="w-4 h-4 animate-spin" />
-                    ) : (
-                      'Salvar Configuração'
-                    )}
+                    ✕
                   </button>
                 </div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {channelConfig.fields.map((field) => (
+                  <div key={field.key} className={field.type === 'textarea' ? 'lg:col-span-2' : ''}>
+                    <label className="block text-white font-semibold mb-2">
+                      {field.label}
+                      {field.required && <span className="text-red-400 ml-1">*</span>}
+                    </label>
+                    
+                    {field.type === 'select' ? (
+                      <select
+                        value={configForm[field.key] || ''}
+                        onChange={(e) => setConfigForm(prev => ({ ...prev, [field.key]: e.target.value }))}
+                        className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-[#FF7A00] focus:outline-none transition-colors duration-300"
+                      >
+                        <option value="" className="bg-[#2D0B55]">Selecione...</option>
+                        {field.options?.map(option => (
+                          <option key={option} value={option} className="bg-[#2D0B55]">{option}</option>
+                        ))}
+                      </select>
+                    ) : field.type === 'textarea' ? (
+                      <textarea
+                        value={configForm[field.key] || ''}
+                        onChange={(e) => setConfigForm(prev => ({ ...prev, [field.key]: e.target.value }))}
+                        placeholder={field.placeholder}
+                        rows={4}
+                        className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-[#FF7A00] focus:outline-none transition-colors duration-300 resize-none"
+                      />
+                    ) : (
+                      <div className="relative">
+                        <input
+                          type={field.type === 'password' && !showSecrets[field.key] ? 'password' : 'text'}
+                          value={configForm[field.key] || ''}
+                          onChange={(e) => setConfigForm(prev => ({ ...prev, [field.key]: e.target.value }))}
+                          placeholder={field.placeholder}
+                          className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 pr-20 text-white placeholder-gray-400 focus:border-[#FF7A00] focus:outline-none transition-colors duration-300"
+                        />
+                        <div className="absolute right-2 top-1/2 -translate-y-1/2 flex space-x-1">
+                          {field.type === 'password' && (
+                            <button
+                              onClick={() => toggleSecretVisibility(field.key)}
+                              className="text-gray-400 hover:text-white transition-colors p-1"
+                            >
+                              {showSecrets[field.key] ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                            </button>
+                          )}
+                          <button
+                            onClick={() => copyToClipboard(configForm[field.key] || '')}
+                            className="text-gray-400 hover:text-white transition-colors p-1"
+                          >
+                            <Copy className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Security Notice */}
+              <div className="mt-6 bg-blue-500/20 border border-blue-500/30 rounded-lg p-4">
+                <div className="flex items-start space-x-3">
+                  <Shield className="w-5 h-5 text-blue-400 mt-0.5" />
+                  <div>
+                    <div className="text-blue-300 font-semibold">Segurança & Privacidade</div>
+                    <div className="text-blue-200 text-sm">
+                      Todas as credenciais são criptografadas com AES-256 e armazenadas com segurança. 
+                      Nunca compartilhamos suas informações com terceiros.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Documentation Link */}
+              {channelConfig.docs && (
+                <div className="mt-4 bg-[#FF7A00]/20 border border-[#FF7A00]/30 rounded-lg p-4">
+                  <div className="flex items-center space-x-3">
+                    <ExternalLink className="w-5 h-5 text-[#FF7A00]" />
+                    <div>
+                      <div className="text-[#FF7A00] font-semibold">Documentação Oficial</div>
+                      <a 
+                        href={channelConfig.docs}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-orange-200 text-sm hover:text-white transition-colors"
+                      >
+                        Consulte a documentação oficial para obter suas credenciais →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div className="flex space-x-3 mt-6">
+                <button
+                  onClick={() => setShowConfigModal(null)}
+                  className="flex-1 bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-lg transition-colors duration-300"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={() => handleTestConnection(currentIntegration.id)}
+                  className="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg transition-colors duration-300 flex items-center space-x-2"
+                >
+                  <Zap className="w-4 h-4" />
+                  <span>Testar</span>
+                </button>
+                <button
+                  onClick={handleSaveConfig}
+                  disabled={isLoading}
+                  className="flex-1 bg-[#FF7A00] hover:bg-[#FF9500] text-white px-4 py-3 rounded-lg transition-colors duration-300 disabled:opacity-50 flex items-center justify-center"
+                >
+                  {isLoading ? (
+                    <RefreshCw className="w-4 h-4 animate-spin" />
+                  ) : (
+                    'Salvar Configuração'
+                  )}
+                </button>
               </div>
             </div>
           </div>
@@ -871,20 +987,29 @@ const ConnectionsPage: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
-                  { name: 'WhatsApp Business', icon: MessageSquare, type: 'whatsapp', popular: true },
-                  { name: 'Instagram Direct', icon: Instagram, type: 'instagram', popular: true },
-                  { name: 'Facebook Messenger', icon: Facebook, type: 'facebook', popular: false },
-                  { name: 'Telegram Bot', icon: Send, type: 'telegram', popular: false },
-                  { name: 'Email SMTP', icon: Mail, type: 'email', popular: true },
-                  { name: 'SMS Gateway', icon: Phone, type: 'sms', popular: false },
-                  { name: 'Webhook Custom', icon: Webhook, type: 'webhook', popular: false },
-                  { name: 'API Personalizada', icon: Globe, type: 'api', popular: false },
+                  { name: 'WhatsApp QR Code', icon: QrCode, type: 'whatsapp-qr', popular: true, description: 'Conexão via QR Code' },
+                  { name: 'WhatsApp Business API', icon: MessageSquare, type: 'whatsapp-business', popular: true, description: 'API oficial do WhatsApp' },
+                  { name: 'Instagram Direct', icon: Instagram, type: 'instagram', popular: true, description: 'Mensagens diretas do Instagram' },
+                  { name: 'Facebook Messenger', icon: Facebook, type: 'facebook', popular: false, description: 'Chat do Facebook' },
+                  { name: 'Telegram Bot', icon: Send, type: 'telegram', popular: true, description: 'Bot do Telegram' },
+                  { name: 'Email SMTP', icon: Mail, type: 'email', popular: true, description: 'Integração de email' },
+                  { name: 'SMS Gateway', icon: Phone, type: 'sms', popular: false, description: 'Mensagens SMS' },
+                  { name: 'Webhook Custom', icon: Webhook, type: 'webhook', popular: false, description: 'Integração customizada' },
                 ].map((channel, index) => (
                   <button
                     key={index}
                     onClick={() => {
                       setShowAddModal(false);
-                      handleAdvancedAction('create-connection');
+                      if (channel.type === 'whatsapp-qr') {
+                        handleAdvancedAction('create-connection');
+                      } else {
+                        const existingIntegration = integrations.find(i => i.type === channel.type);
+                        if (existingIntegration) {
+                          handleConfigureIntegration(existingIntegration.id);
+                        } else {
+                          handleAdvancedAction('create-connection');
+                        }
+                      }
                     }}
                     className="relative bg-white/5 hover:bg-white/10 rounded-xl p-6 border border-white/10 hover:border-[#FF7A00]/50 transition-all duration-300 text-left group"
                   >
@@ -897,7 +1022,7 @@ const ConnectionsPage: React.FC = () => {
                       <channel.icon className="w-6 h-6 text-white" />
                     </div>
                     <h4 className="text-white font-semibold mb-2">{channel.name}</h4>
-                    <p className="text-gray-400 text-sm">Conectar {channel.name.toLowerCase()}</p>
+                    <p className="text-gray-400 text-sm">{channel.description}</p>
                   </button>
                 ))}
               </div>
