@@ -18,7 +18,8 @@ import {
   FileText,
   Target,
   Calendar,
-  RefreshCw
+  RefreshCw,
+  CalendarDays
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import DemoModeIndicator from '../common/DemoModeIndicator';
@@ -38,6 +39,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
     { name: 'Dashboard', href: '/dashboard', icon: BarChart3, current: currentPage === 'dashboard' },
     { name: 'CRM & Vendas', href: '/crm', icon: Target, current: currentPage === 'crm' },
     { name: 'Agenda', href: '/agenda', icon: Calendar, current: currentPage === 'agenda' },
+    { name: 'Calendário', href: '/calendar', icon: CalendarDays, current: currentPage === 'calendar' },
     { name: 'Follow-up', href: '/follow-up', icon: RefreshCw, current: currentPage === 'follow-up' },
     { name: '---', href: '#', icon: null, current: false }, // Divider
     { name: 'Servidores', href: '/servers', icon: Server, current: currentPage === 'servers' },
