@@ -15,7 +15,8 @@ import {
   Server,
   Smartphone,
   Building,
-  FileText
+  FileText,
+  Target
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import DemoModeIndicator from '../common/DemoModeIndicator';
@@ -33,6 +34,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: BarChart3, current: currentPage === 'dashboard' },
+    { name: 'CRM & Vendas', href: '/crm', icon: Target, current: currentPage === 'crm' },
     { name: 'Servidores', href: '/servers', icon: Server, current: currentPage === 'servers' },
     { name: 'Conexões', href: '/connections', icon: Smartphone, current: currentPage === 'connections' },
     { name: 'Conversas', href: '/conversations', icon: MessageSquare, current: currentPage === 'conversations' },

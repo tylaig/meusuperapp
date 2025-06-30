@@ -11,6 +11,7 @@ import OrganizationPage from './components/dashboard/OrganizationPage';
 import SubscriptionPage from './components/dashboard/SubscriptionPage';
 import SettingsPage from './components/dashboard/SettingsPage';
 import ProfilePage from './components/dashboard/ProfilePage';
+import CRMPage from './components/dashboard/CRMPage';
 
 // Landing page components
 import Header from './components/Header';
@@ -46,7 +47,7 @@ const AppContent: React.FC = () => {
 
   // Check authentication for dashboard pages
   const dashboardPages = [
-    '/dashboard', '/servers', '/connections', '/conversations', 
+    '/dashboard', '/crm', '/servers', '/connections', '/conversations', 
     '/analytics', '/logs', '/organization', '/subscription', 
     '/settings', '/profile'
   ];
@@ -62,6 +63,8 @@ const AppContent: React.FC = () => {
     switch (path) {
       case '/dashboard':
         return <DashboardPage />;
+      case '/crm':
+        return <CRMPage />;
       case '/servers':
         return <ServersPage />;
       case '/connections':
