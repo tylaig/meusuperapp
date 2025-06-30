@@ -4,7 +4,7 @@ import { ArrowRight, Shield, Clock, Zap } from 'lucide-react';
 const CTASection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
-    whatsapp: '',
+    whatsApp: '',
     company: '',
     pain: ''
   });
@@ -49,7 +49,7 @@ const CTASection: React.FC = () => {
     setIsSubmitting(false);
     
     // Reset form and show success message
-    setFormData({ name: '', whatsapp: '', company: '', pain: '' });
+    setFormData({ name: '', whatsApp: '', company: '', pain: '' });
     alert('Sucesso! Entraremos em contato em até 2 horas.');
   };
 
@@ -125,8 +125,8 @@ const CTASection: React.FC = () => {
                   </label>
                   <input
                     type="tel"
-                    name="whatsapp"
-                    value={formData.whatsapp}
+                    name="whatsApp"
+                    value={formData.whatsApp}
                     onChange={handleInputChange}
                     required
                     className="w-full bg-white/10 border-2 border-white/20 rounded-xl px-4 sm:px-6 py-3 sm:py-4 text-white text-base sm:text-lg focus:border-[#FF7A00] focus:outline-none transition-colors duration-300 backdrop-blur-md placeholder-gray-400"

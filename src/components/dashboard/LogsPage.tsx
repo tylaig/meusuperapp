@@ -139,7 +139,7 @@ const LogsPage: React.FC = () => {
   const loadLogs = async () => {
     setIsLoading(true);
     
-    // Simulate API call with realistic AI sales data
+    // Simulate API request and load mock log data
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     const mockLogs: LogEntry[] = [
