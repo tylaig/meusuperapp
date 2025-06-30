@@ -84,8 +84,8 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
       {/* Mobile sidebar */}
       <div className={`fixed inset-0 z-50 lg:hidden ${sidebarOpen ? 'block' : 'hidden'}`}>
         <div className="fixed inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
-        <div className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-[#2D0B55] to-[#1A0633] border-r border-white/10">
-          <div className="flex items-center justify-between p-4 border-b border-white/10">
+        <div className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-[#2D0B55] to-[#1A0633] border-r border-white/10 flex flex-col">
+          <div className="flex items-center justify-between p-4 border-b border-white/10 flex-shrink-0">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gradient-to-br from-[#FF7A00] to-[#FF9500] rounded-lg flex items-center justify-center">
                 <Zap className="w-4 h-4 text-white" />
@@ -99,7 +99,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
               <X className="w-6 h-6" />
             </button>
           </div>
-          <nav className="p-4 space-y-2">
+          <nav className="flex-1 overflow-y-auto p-4 space-y-2">
             {navigation.map((item) => {
               if (item.name === '---') {
                 return <div key={item.href} className="h-px bg-white/10 my-4"></div>;
@@ -126,14 +126,14 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
 
       {/* Desktop sidebar */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:w-64 lg:block">
-        <div className="h-full bg-gradient-to-b from-[#2D0B55] to-[#1A0633] border-r border-white/10">
-          <div className="flex items-center space-x-3 p-6 border-b border-white/10">
+        <div className="h-full bg-gradient-to-b from-[#2D0B55] to-[#1A0633] border-r border-white/10 flex flex-col">
+          <div className="flex items-center space-x-3 p-6 border-b border-white/10 flex-shrink-0">
             <div className="w-10 h-10 bg-gradient-to-br from-[#FF7A00] to-[#FF9500] rounded-xl flex items-center justify-center">
               <Zap className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold text-white">meusuper.app</span>
           </div>
-          <nav className="p-6 space-y-2">
+          <nav className="flex-1 overflow-y-auto p-6 space-y-2">
             {navigation.map((item) => {
               if (item.name === '---') {
                 return <div key={item.href} className="h-px bg-white/10 my-4"></div>;

@@ -43,6 +43,48 @@ const UseCasesSection: React.FC = () => {
       description: "Qualifique leads, agende calls e apresente seus programas de mentoria de forma personalizada.",
       benefits: ["📞 +156% calls agendadas", "🎯 Leads qualificados", "💰 Ticket médio maior"],
       color: "from-purple-500 to-purple-600"
+    },
+    {
+      icon: BookOpen,
+      title: "Infoprodutores",  
+      description: "Venda cursos, ebooks e consultorias com funil completo desde a captação até o fechamento.",
+      benefits: ["📚 +234% vendas", "🎓 Educação do lead", "🔄 Follow-up inteligente"],
+      color: "from-orange-500 to-orange-600"
+    },
+    {
+      icon: Package,
+      title: "Produtos Físicos",
+      description: "Catálogo inteligente, rastreamento de pedidos e atendimento pós-venda automatizado.",
+      benefits: ["📦 Envios otimizados", "🔍 Catálogo dinâmico", "💬 Suporte 24/7"],
+      color: "from-red-500 to-red-600"
+    },
+    {
+      icon: Stethoscope,
+      title: "Clínicas & Saúde",
+      description: "Agendamento inteligente, lembretes automáticos e triagem inicial de pacientes 24/7.",
+      benefits: ["📅 +89% agendamentos", "⏰ Redução de faltas", "🏥 Triagem automática"],
+      color: "from-teal-500 to-teal-600"
+    },
+    {
+      icon: Home,
+      title: "Imobiliárias",
+      description: "Qualificação de interessados, agendamento de visitas e acompanhamento pós-venda.",
+      benefits: ["🏠 +145% visitas", "💼 Leads qualificados", "📋 Follow-up automático"],
+      color: "from-indigo-500 to-indigo-600"
+    },
+    {
+      icon: Briefcase,
+      title: "Consultoria",
+      description: "Captação de clientes, apresentação de serviços e agendamento de reuniões estratégicas.",
+      benefits: ["🎯 +178% reuniões", "💡 Apresentação automática", "📊 Relatórios detalhados"],
+      color: "from-cyan-500 to-cyan-600"
+    },
+    {
+      icon: Utensils,
+      title: "Restaurantes",
+      description: "Pedidos via WhatsApp, reservas automáticas e programa de fidelidade inteligente.",
+      benefits: ["🍕 +92% pedidos online", "🪑 Reservas otimizadas", "⭐ Fidelização automática"],
+      color: "from-yellow-500 to-yellow-600"
     }
   ];
 
@@ -69,15 +111,15 @@ const UseCasesSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 px-2">
-            Serviços Personalizados & <span className="text-[#FF7A00]">Software Sob Medida</span>
+            Funciona para <span className="text-[#FF7A00]">Qualquer</span> Negócio
           </h2>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
-            Criamos <span className="text-[#FF7A00] font-semibold">soluções tailor-made</span>: automações, chatbots e softwares para desafios específicos da sua empresa
+            Nossa IA se adapta ao seu modelo de negócio e escala suas vendas independentemente do setor
           </p>
         </div>
 
         {/* Main Use Cases */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto mb-16">
           {useCases.map((useCase, index) => (
             <div
               key={index}
@@ -130,7 +172,7 @@ const UseCasesSection: React.FC = () => {
                   ? 'translate-y-0 opacity-100' 
                   : 'translate-y-20 opacity-0'
               }`}
-              style={{ transitionDelay: `${(index + 3) * 100}ms` }}
+              style={{ transitionDelay: `${(index + 9) * 100}ms` }}
             >
               <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 hover:border-[#FF7A00]/50 transition-all duration-300 max-w-4xl mx-auto">
                 <div className="flex items-start space-x-4">
