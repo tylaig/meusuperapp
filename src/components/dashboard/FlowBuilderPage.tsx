@@ -402,16 +402,55 @@ const FlowBuilderPage: React.FC = () => {
     const horizontalSpacing = 300;
     const verticalSpacing = 200;
 
-    // Simple grid layout
-    const updatedNodes = selectedFlow.nodes.map((node, index) => {
-      const row = Math.floor(index / 3);
-      const col = index % 3;
-      
+    // Build adjacency and incoming edge counts
+    const adjacency: Record<string, string[]> = {};
+    const incoming: Record<string, number> = {};
+    selectedFlow.connections.forEach(conn => {
+      if (!adjacency[conn.source]) adjacency[conn.source] = [];
+      adjacency[conn.source].push(conn.target);
+      incoming[conn.target] = (incoming[conn.target] || 0) + 1;
+    });
+
+    // Identify root nodes (nodes without incoming connections)
+    const roots = selectedFlow.nodes
+      .filter(n => !incoming[n.id])
+      .map(n => n.id);
+
+    // BFS to assign hierarchical levels
+    const levels: Record<string, number> = {};
+    const queue = [...roots];
+    roots.forEach(id => (levels[id] = 0));
+
+    while (queue.length) {
+      const current = queue.shift() as string;
+      const currentLevel = levels[current];
+      const children = adjacency[current] || [];
+      children.forEach(child => {
+        if (levels[child] === undefined) {
+          levels[child] = currentLevel + 1;
+          queue.push(child);
+        } else {
+          levels[child] = Math.max(levels[child], currentLevel + 1);
+        }
+      });
+    }
+
+    // Group nodes by level to determine ordering
+    const levelNodes: Record<number, string[]> = {};
+    selectedFlow.nodes.forEach(node => {
+      const lvl = levels[node.id] ?? 0;
+      if (!levelNodes[lvl]) levelNodes[lvl] = [];
+      levelNodes[lvl].push(node.id);
+    });
+
+    const updatedNodes = selectedFlow.nodes.map(node => {
+      const lvl = levels[node.id] ?? 0;
+      const index = levelNodes[lvl].indexOf(node.id);
       return {
         ...node,
         position: {
-          x: col * horizontalSpacing,
-          y: row * verticalSpacing
+          x: index * horizontalSpacing,
+          y: lvl * verticalSpacing
         }
       };
     });
@@ -528,7 +567,7 @@ const FlowBuilderPage: React.FC = () => {
         case 'success': return '#10B981';
         case 'error': return '#EF4444';
         case 'warning': return '#F59E0B';
-        default: return '#6B7280';
+        default: return '#FF7A00';
       }
     };
 
@@ -589,7 +628,7 @@ const FlowBuilderPage: React.FC = () => {
       <DashboardLayout currentPage="flow-builder">
         <div className="h-screen flex flex-col">
           {/* Builder Header */}
-          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border-b border-white/20 p-4">
+          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border-b border-white/20 p-4 sticky top-0 z-20">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <button
