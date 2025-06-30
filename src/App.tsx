@@ -18,6 +18,7 @@ import CalendarPage from './components/dashboard/CalendarPage';
 import AutomationPage from './components/dashboard/AutomationPage';
 import AIAgentPage from './components/dashboard/AIAgentPage';
 import CampaignPage from './components/dashboard/CampaignPage';
+import FlowBuilderPage from './components/dashboard/FlowBuilderPage';
 
 // Landing page components
 import Header from './components/Header';
@@ -53,7 +54,7 @@ const AppContent: React.FC = () => {
 
   // Check authentication for dashboard pages
   const dashboardPages = [
-    '/dashboard', '/crm', '/agenda', '/calendar', '/follow-up', '/automation', '/ai-agent', '/campaigns', '/servers', '/connections', '/conversations', 
+    '/dashboard', '/crm', '/agenda', '/calendar', '/follow-up', '/automation', '/ai-agent', '/campaigns', '/flow-builder', '/servers', '/connections', '/conversations', 
     '/analytics', '/logs', '/organization', '/subscription', 
     '/settings', '/profile'
   ];
@@ -83,6 +84,8 @@ const AppContent: React.FC = () => {
         return <AIAgentPage />;
       case '/campaigns':
         return <CampaignPage />;
+      case '/flow-builder':
+        return <FlowBuilderPage />;
       case '/servers':
         return <ServersPage />;
       case '/connections':

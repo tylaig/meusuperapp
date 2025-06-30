@@ -22,7 +22,8 @@ import {
   CalendarDays,
   Workflow,
   Bot,
-  Send
+  Send,
+  GitBranch
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import DemoModeIndicator from '../common/DemoModeIndicator';
@@ -47,6 +48,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
     { name: 'Automação', href: '/automation', icon: Workflow, current: currentPage === 'automation' },
     { name: 'Agente IA', href: '/ai-agent', icon: Bot, current: currentPage === 'ai-agent' },
     { name: 'Campanhas', href: '/campaigns', icon: Send, current: currentPage === 'campaigns' },
+    { name: 'Construtor de Fluxos', href: '/flow-builder', icon: GitBranch, current: currentPage === 'flow-builder' },
     { name: '---', href: '#', icon: null, current: false }, // Divider
     { name: 'Servidores', href: '/servers', icon: Server, current: currentPage === 'servers' },
     { name: 'Conexões', href: '/connections', icon: Smartphone, current: currentPage === 'connections' },
