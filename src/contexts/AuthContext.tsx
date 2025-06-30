@@ -26,29 +26,45 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [authState, setAuthState] = useState<AuthState>({
     user: null,
     isAuthenticated: false,
-    isLoading: false, // Changed to false for development
+    isLoading: true,
   });
 
   useEffect(() => {
-    // For development, we'll simulate a logged-in user
-    const mockUser: User = {
-      id: '1',
-      name: 'João Silva',
-      email: 'joao@meusuper.app',
-      avatar: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-      role: 'owner',
-      organizationId: 'org-1',
-      permissions: ['*'],
-      createdAt: new Date().toISOString(),
-      lastLogin: new Date().toISOString(),
+    // Check for existing authentication
+    const checkAuth = () => {
+      const token = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+      const userData = localStorage.getItem('userData') || sessionStorage.getItem('userData');
+      
+      if (token && userData) {
+        try {
+          const user = JSON.parse(userData);
+          setAuthState({
+            user,
+            isAuthenticated: true,
+            isLoading: false,
+          });
+        } catch (error) {
+          // Invalid stored data, clear it
+          localStorage.removeItem('authToken');
+          localStorage.removeItem('userData');
+          sessionStorage.removeItem('authToken');
+          sessionStorage.removeItem('userData');
+          setAuthState({
+            user: null,
+            isAuthenticated: false,
+            isLoading: false,
+          });
+        }
+      } else {
+        setAuthState({
+          user: null,
+          isAuthenticated: false,
+          isLoading: false,
+        });
+      }
     };
 
-    // Auto-login for development
-    setAuthState({
-      user: mockUser,
-      isAuthenticated: true,
-      isLoading: false,
-    });
+    checkAuth();
   }, []);
 
   const login = async (email: string, password: string, rememberMe = false) => {

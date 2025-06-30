@@ -19,7 +19,7 @@ const Header: React.FC = () => {
   };
 
   const handleLogin = () => {
-    window.location.href = '/dashboard';
+    window.location.href = '/login';
   };
 
   return (

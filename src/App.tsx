@@ -39,51 +39,68 @@ const AppContent: React.FC = () => {
   // Get current path
   const path = window.location.pathname;
 
-  // Show login page only if explicitly on /login route
+  // Show login page
   if (path === '/login') {
     return <LoginPage />;
   }
 
-  // Show dashboard pages directly (bypass authentication for development)
-  switch (path) {
-    case '/dashboard':
-      return <DashboardPage />;
-    case '/servers':
-      return <ServersPage />;
-    case '/connections':
-      return <ConnectionsPage />;
-    case '/conversations':
-      return <ConversationsPage />;
-    case '/analytics':
-      return <AnalyticsPage />;
-    case '/logs':
-      return <LogsPage />;
-    case '/organization':
-      return <OrganizationPage />;
-    case '/subscription':
-      return <SubscriptionPage />;
-    case '/settings':
-      return <SettingsPage />;
-    case '/profile':
-      return <ProfilePage />;
-    default:
-      // Show landing page for root and unknown routes
-      return (
-        <div className="min-h-screen">
-          <Header />
-          <HeroSection />
-          <StatsSection />
-          <ProblemsSection />
-          <HowItWorksSection />
-          <UseCasesSection />
-          <Calculator />
-          <TestimonialsSection />
-          <FAQSection />
-          <CTASection />
-          <Footer />
-        </div>
-      );
+  // Check authentication for dashboard pages
+  const dashboardPages = [
+    '/dashboard', '/servers', '/connections', '/conversations', 
+    '/analytics', '/logs', '/organization', '/subscription', 
+    '/settings', '/profile'
+  ];
+
+  if (dashboardPages.includes(path)) {
+    if (!isAuthenticated) {
+      // Redirect to login if not authenticated
+      window.location.href = '/login';
+      return null;
+    }
+
+    // Show appropriate dashboard page
+    switch (path) {
+      case '/dashboard':
+        return <DashboardPage />;
+      case '/servers':
+        return <ServersPage />;
+      case '/connections':
+        return <ConnectionsPage />;
+      case '/conversations':
+        return <ConversationsPage />;
+      case '/analytics':
+        return <AnalyticsPage />;
+      case '/logs':
+        return <LogsPage />;
+      case '/organization':
+        return <OrganizationPage />;
+      case '/subscription':
+        return <SubscriptionPage />;
+      case '/settings':
+        return <SettingsPage />;
+      case '/profile':
+        return <ProfilePage />;
+      default:
+        return <DashboardPage />;
+    }
   }
+
+  // Show landing page for root and unknown routes
+  return (
+    <div className="min-h-screen">
+      <Header />
+      <HeroSection />
+      <StatsSection />
+      <ProblemsSection />
+      <HowItWorksSection />
+      <UseCasesSection />
+      <Calculator />
+      <TestimonialsSection />
+      <FAQSection />
+      <CTASection />
+      <Footer />
+    </div>
+  );
 };
 
 function App() {

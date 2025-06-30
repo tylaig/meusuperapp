@@ -68,6 +68,19 @@ const LoginPage: React.FC = () => {
     }
   };
 
+  const handleDemoLogin = async () => {
+    setIsLoading(true);
+    setError('');
+
+    try {
+      await login('demo@meusuper.app', 'demo123', false);
+    } catch (err) {
+      setError('Erro no login de demonstração');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   if (showForgotPassword) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#2D0B55] via-[#3D1565] to-[#2D0B55] flex items-center justify-center p-4">
@@ -140,6 +153,28 @@ const LoginPage: React.FC = () => {
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">Bem-vindo de volta!</h2>
             <p className="text-gray-300">Acesse sua conta para continuar</p>
+          </div>
+
+          {/* Demo Login Banner */}
+          <div className="bg-gradient-to-r from-[#FF7A00]/20 to-[#FF9500]/20 rounded-xl p-4 mb-6 border border-[#FF7A00]/30">
+            <div className="text-center">
+              <h3 className="text-white font-semibold mb-2">🚀 Login Demonstração</h3>
+              <p className="text-gray-300 text-sm mb-3">Teste nossa plataforma sem criar conta</p>
+              <button
+                onClick={handleDemoLogin}
+                disabled={isLoading}
+                className="w-full bg-[#FF7A00] hover:bg-[#FF9500] text-white py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50"
+              >
+                {isLoading ? 'Entrando...' : 'Entrar como Demo'}
+              </button>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="flex items-center mb-6">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+            <span className="px-4 text-gray-400 text-sm">ou faça login</span>
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
           </div>
 
           {/* Error Message */}
