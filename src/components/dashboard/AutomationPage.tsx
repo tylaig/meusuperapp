@@ -48,7 +48,8 @@ import {
   ArrowLeft,
   History,
   Share2,
-  FolderOpen
+  FolderOpen,
+  CreditCard
 } from 'lucide-react';
 import DashboardLayout from './DashboardLayout';
 
