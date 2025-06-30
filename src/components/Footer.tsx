@@ -20,8 +20,8 @@ const Footer: React.FC = () => {
               <span className="text-xl sm:text-2xl font-bold text-white">meusuper.app</span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-4 sm:mb-6 max-w-md text-center md:text-left mx-auto md:mx-0 text-sm sm:text-base">
-              Transformamos empresas com IA de vendas 24/7. Mais de 1.000 clientes já recuperaram 
-              milhões em vendas perdidas com nossa tecnologia.
+              Transformamos empresas com IA de vendas 24/7. Mais de 100 clientes já recuperaram 
+              milhões em vendas perdidas com nossa tecnologia personalizada.
             </p>
             
             {/* Founder */}
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
                 <div>
                   <h4 className="text-white font-bold text-sm sm:text-base">Samuel Vicente Ferreira</h4>
                   <p className="text-[#FF7A00] text-xs sm:text-sm font-semibold">CEO & Founder</p>
-                  <p className="text-gray-400 text-xs">Parceiro Oficial Dubotics</p>
+                  <p className="text-gray-400 text-xs">Especialista em Automação e IA para Vendas</p>
                 </div>
               </div>
             </div>
@@ -129,7 +129,7 @@ const Footer: React.FC = () => {
               <span className="text-gray-300 text-xs sm:text-sm">⭐ 97% Satisfação</span>
             </div>
             <div className="bg-white/5 rounded-lg px-4 sm:px-6 py-2 sm:py-3 border border-white/10">
-              <span className="text-gray-300 text-xs sm:text-sm">🚀 Parceiro Dubotics</span>
+              <span className="text-gray-300 text-xs sm:text-sm">🚀 100 Clientes Ativos</span>
             </div>
           </div>
           
@@ -142,7 +142,7 @@ const Footer: React.FC = () => {
               <a href="#" className="hover:text-[#FF7A00] transition-colors duration-300">Termos de Uso</a>
             </p>
             <p className="text-gray-500 text-xs">
-              CNPJ: 00.000.000/0001-00 • Desenvolvido com ❤️ para revolucionar suas vendas
+              CNPJ: 61.455.363/0001-06 • Desenvolvido com ❤️ por Samuel Vicente Ferreira para revolucionar suas vendas 24/7
             </p>
           </div>
         </div>
