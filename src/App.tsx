@@ -15,6 +15,7 @@ import CRMPage from './components/dashboard/CRMPage';
 import AgendaPage from './components/dashboard/AgendaPage';
 import FollowUpPage from './components/dashboard/FollowUpPage';
 import CalendarPage from './components/dashboard/CalendarPage';
+import AutomationPage from './components/dashboard/AutomationPage';
 
 // Landing page components
 import Header from './components/Header';
@@ -50,7 +51,7 @@ const AppContent: React.FC = () => {
 
   // Check authentication for dashboard pages
   const dashboardPages = [
-    '/dashboard', '/crm', '/agenda', '/calendar', '/follow-up', '/servers', '/connections', '/conversations', 
+    '/dashboard', '/crm', '/agenda', '/calendar', '/follow-up', '/automation', '/servers', '/connections', '/conversations', 
     '/analytics', '/logs', '/organization', '/subscription', 
     '/settings', '/profile'
   ];
@@ -74,6 +75,8 @@ const AppContent: React.FC = () => {
         return <CalendarPage />;
       case '/follow-up':
         return <FollowUpPage />;
+      case '/automation':
+        return <AutomationPage />;
       case '/servers':
         return <ServersPage />;
       case '/connections':
