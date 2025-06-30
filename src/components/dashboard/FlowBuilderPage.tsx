@@ -40,14 +40,304 @@ import {
   RotateCcw,
   RotateCw,
   ZoomIn,
-  ZoomOut
+  ZoomOut,
+  Workflow,
+  Bot,
+  Send,
+  Activity,
+  TrendingUp,
+  GitBranch,
+  Layers,
+  Database,
+  Globe,
+  Smartphone,
+  Monitor,
+  Cpu,
+  HardDrive,
+  Wifi,
+  Shield,
+  Key,
+  Bell,
+  Star,
+  Heart,
+  ThumbsUp,
+  Share2,
+  Download as DownloadIcon,
+  Upload as UploadIcon,
+  Code,
+  Terminal,
+  Server,
+  Cloud,
+  Lock,
+  Unlock,
+  UserPlus,
+  UserMinus,
+  UserCheck,
+  UserX,
+  Home,
+  Building,
+  MapPin,
+  Navigation,
+  Compass,
+  Map,
+  Route,
+  Car,
+  Truck,
+  Plane,
+  Ship,
+  Train,
+  Bike,
+  Walk,
+  Run,
+  Pause,
+  Stop,
+  FastForward,
+  Rewind,
+  SkipBack,
+  SkipForward,
+  Volume2,
+  VolumeX,
+  Headphones,
+  Speaker,
+  Microphone,
+  Camera,
+  VideoIcon,
+  PhotoIcon,
+  Film,
+  Music,
+  Radio,
+  Tv,
+  Gamepad2,
+  Joystick,
+  Dice1,
+  Dice2,
+  Dice3,
+  Dice4,
+  Dice5,
+  Dice6,
+  Puzzle,
+  Lightbulb,
+  Flame,
+  Snowflake,
+  Sun,
+  Moon,
+  CloudRain,
+  CloudSnow,
+  CloudLightning,
+  Rainbow,
+  Umbrella,
+  Thermometer,
+  Wind,
+  Tornado,
+  Volcano,
+  Mountain,
+  TreePine,
+  Flower,
+  Leaf,
+  Seedling,
+  Cactus,
+  Cherry,
+  Apple,
+  Grape,
+  Banana,
+  Lemon,
+  Orange,
+  Strawberry,
+  Carrot,
+  Corn,
+  Wheat,
+  Coffee,
+  Wine,
+  Beer,
+  Cake,
+  Cookie,
+  Pizza,
+  Sandwich,
+  Soup,
+  Salad,
+  Fish,
+  Beef,
+  Chicken,
+  Egg,
+  Milk,
+  Cheese,
+  Bread,
+  Rice,
+  Noodles,
+  Sushi,
+  Taco,
+  Burger,
+  Hotdog,
+  Donut,
+  IceCream,
+  Candy,
+  Chocolate,
+  Honey,
+  Salt,
+  Pepper,
+  Spice,
+  Herb,
+  Garlic,
+  Onion,
+  Tomato,
+  Potato,
+  Mushroom,
+  Broccoli,
+  Lettuce,
+  Spinach,
+  Cabbage,
+  Cucumber,
+  Pepper as PepperIcon,
+  Eggplant,
+  Avocado,
+  Coconut,
+  Pineapple,
+  Watermelon,
+  Melon,
+  Peach,
+  Pear,
+  Plum,
+  Kiwi,
+  Mango,
+  Papaya,
+  Pomegranate,
+  Blueberry,
+  Blackberry,
+  Raspberry,
+  Cranberry,
+  Gooseberry,
+  Elderberry,
+  Currant,
+  Date,
+  Fig,
+  Raisin,
+  Almond,
+  Walnut,
+  Peanut,
+  Cashew,
+  Pistachio,
+  Hazelnut,
+  Chestnut,
+  Pecan,
+  Macadamia,
+  BrazilNut,
+  PineNut,
+  Sunflower,
+  Pumpkin,
+  Sesame,
+  Poppy,
+  Flax,
+  Chia,
+  Quinoa,
+  Oats,
+  Barley,
+  Rye,
+  Buckwheat,
+  Millet,
+  Sorghum,
+  Amaranth,
+  Teff,
+  Spelt,
+  Kamut,
+  Farro,
+  Bulgur,
+  Couscous,
+  Polenta,
+  Grits,
+  Hominy,
+  Tapioca,
+  Arrowroot,
+  Cassava,
+  Yam,
+  SweetPotato,
+  Turnip,
+  Radish,
+  Beet,
+  Parsnip,
+  Rutabaga,
+  Kohlrabi,
+  Fennel,
+  Celery,
+  Leek,
+  Scallion,
+  Chive,
+  Shallot,
+  Ginger,
+  Turmeric,
+  Galangal,
+  Lemongrass,
+  Kaffir,
+  Lime,
+  Citron,
+  Grapefruit,
+  Tangerine,
+  Mandarin,
+  Clementine,
+  Satsuma,
+  Yuzu,
+  Bergamot,
+  Kumquat,
+  Finger,
+  Blood,
+  Navel,
+  Valencia,
+  Jaffa,
+  Seville,
+  Meyer,
+  Key,
+  Persian,
+  Tahiti,
+  Bearss,
+  Eureka,
+  Lisbon,
+  Ponderosa,
+  Buddha,
+  Etrog,
+  Sudachi,
+  Kabosu,
+  Daidai,
+  Hassaku,
+  Iyokan,
+  Jabara,
+  Kawachi,
+  Kinkoji,
+  Koji,
+  Natsu,
+  Oto,
+  Ponkan,
+  Rokugatsu,
+  Setoka,
+  Shiranuhi,
+  Tosa,
+  Unshu,
+  Yamato,
+  Zabon,
+  Amanatsu,
+  Banpeiyu,
+  Buntan,
+  Hyuganatsu,
+  Iyokan as IyokanIcon,
+  Jabara as JabaraIcon,
+  Kawachi as KawachiIcon,
+  Kinkoji as KinkojiIcon,
+  Koji as KojiIcon,
+  Natsu as NatsuIcon,
+  Oto as OtoIcon,
+  Ponkan as PonkanIcon,
+  Rokugatsu as RokugatsuIcon,
+  Setoka as SetokaIcon,
+  Shiranuhi as ShiranuhiIcon,
+  Tosa as TosaIcon,
+  Unshu as UnshuIcon,
+  Yamato as YamatoIcon,
+  Zabon as ZabonIcon
 } from 'lucide-react';
 import DashboardLayout from './DashboardLayout';
 
 interface FlowNode {
   id: string;
-  type: 'trigger' | 'condition' | 'action' | 'delay' | 'end';
-  channel: 'whatsapp' | 'instagram' | 'email' | 'sms';
+  type: 'trigger' | 'condition' | 'action' | 'delay' | 'end' | 'webhook' | 'api' | 'database' | 'email' | 'sms' | 'notification';
+  category: 'triggers' | 'actions' | 'conditions' | 'integrations' | 'utilities' | 'ai' | 'data' | 'communication';
   position: { x: number; y: number };
   data: {
     title: string;
@@ -55,31 +345,41 @@ interface FlowNode {
     config: any;
     icon: React.ElementType;
     color: string;
+    status?: 'success' | 'error' | 'warning' | 'pending';
   };
-  connections: string[];
+  connections: {
+    input: boolean;
+    outputs: string[];
+  };
 }
 
 interface FlowConnection {
   id: string;
   source: string;
   target: string;
+  sourceHandle?: string;
+  targetHandle?: string;
+  animated?: boolean;
+  style?: any;
   label?: string;
+  status?: 'success' | 'error' | 'warning' | 'active';
 }
 
 interface Flow {
   id: string;
   name: string;
   description: string;
-  channel: 'whatsapp' | 'instagram' | 'email' | 'sms';
-  status: 'draft' | 'active' | 'paused';
+  status: 'draft' | 'active' | 'paused' | 'error';
   nodes: FlowNode[];
   connections: FlowConnection[];
   createdAt: string;
   lastModified: string;
+  lastRun?: string;
   metrics?: {
     executions: number;
     successRate: number;
     avgDuration: number;
+    errors: number;
   };
 }
 
@@ -87,9 +387,8 @@ const FlowBuilderPage: React.FC = () => {
   const [flows, setFlows] = useState<Flow[]>([]);
   const [selectedFlow, setSelectedFlow] = useState<Flow | null>(null);
   const [isBuilderOpen, setIsBuilderOpen] = useState(false);
-  const [selectedChannel, setSelectedChannel] = useState<'whatsapp' | 'instagram' | 'email' | 'sms' | null>(null);
   const [draggedNode, setDraggedNode] = useState<any>(null);
-  const [canvasOffset, setCanvasOffset] = useState({ x: 0, y: 0 });
+  const [canvasOffset, setCanvasOffset] = useState({ x: 400, y: 300 });
   const [canvasScale, setCanvasScale] = useState(1);
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
   const [showNodeConfig, setShowNodeConfig] = useState(false);
@@ -97,51 +396,58 @@ const FlowBuilderPage: React.FC = () => {
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [isTestMode, setIsTestMode] = useState(false);
   const [testResults, setTestResults] = useState<any>(null);
+  const [connectionMode, setConnectionMode] = useState(false);
+  const [connectionStart, setConnectionStart] = useState<string | null>(null);
+  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
+  const [sidebarCategory, setSidebarCategory] = useState<string>('triggers');
 
   const canvasRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [draggedNodeId, setDraggedNodeId] = useState<string | null>(null);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     // Mock data for flows
     setFlows([
       {
         id: '1',
-        name: 'Boas-vindas WhatsApp',
-        description: 'Fluxo de boas-vindas para novos contatos no WhatsApp',
-        channel: 'whatsapp',
+        name: 'Automação de Boas-vindas',
+        description: 'Fluxo completo de boas-vindas para novos usuários',
         status: 'active',
         nodes: [],
         connections: [],
         createdAt: '2024-01-15T10:00:00Z',
         lastModified: '2024-01-20T14:30:00Z',
+        lastRun: '2024-01-25T09:15:00Z',
         metrics: {
           executions: 1247,
           successRate: 94.5,
-          avgDuration: 2.3
+          avgDuration: 2.3,
+          errors: 12
         }
       },
       {
         id: '2',
-        name: 'Follow-up Email',
-        description: 'Sequência de follow-up por email para leads',
-        channel: 'email',
+        name: 'Processamento de Pedidos',
+        description: 'Automação completa do processo de pedidos',
         status: 'active',
         nodes: [],
         connections: [],
         createdAt: '2024-01-10T08:30:00Z',
         lastModified: '2024-01-18T16:45:00Z',
+        lastRun: '2024-01-25T08:45:00Z',
         metrics: {
           executions: 856,
           successRate: 87.2,
-          avgDuration: 5.7
+          avgDuration: 5.7,
+          errors: 8
         }
       },
       {
         id: '3',
-        name: 'Carrinho Abandonado SMS',
-        description: 'Recuperação de carrinho abandonado via SMS',
-        channel: 'sms',
+        name: 'Análise de Dados',
+        description: 'Coleta e análise automática de dados',
         status: 'draft',
         nodes: [],
         connections: [],
@@ -151,113 +457,128 @@ const FlowBuilderPage: React.FC = () => {
     ]);
   }, []);
 
-  const channelConfigs = {
-    whatsapp: {
-      name: 'WhatsApp',
-      icon: MessageSquare,
-      color: 'from-green-500 to-green-600',
-      triggers: [
-        { id: 'new_contact', title: 'Novo Contato', icon: Users, description: 'Quando um novo contato inicia conversa' },
-        { id: 'keyword', title: 'Palavra-chave', icon: Search, description: 'Quando uma palavra específica é mencionada' },
-        { id: 'time_based', title: 'Baseado em Tempo', icon: Clock, description: 'Em horários específicos' },
-        { id: 'inactivity', title: 'Inatividade', icon: RefreshCw, description: 'Após período sem interação' }
-      ],
-      actions: [
-        { id: 'send_text', title: 'Enviar Texto', icon: MessageSquare, description: 'Mensagem de texto simples' },
-        { id: 'send_audio', title: 'Enviar Áudio', icon: Mic, description: 'Mensagem de áudio' },
-        { id: 'send_image', title: 'Enviar Imagem', icon: Image, description: 'Imagem com legenda' },
-        { id: 'send_video', title: 'Enviar Vídeo', icon: Video, description: 'Vídeo com legenda' },
-        { id: 'send_menu', title: 'Menu Interativo', icon: Menu, description: 'Menu com opções' },
-        { id: 'send_buttons', title: 'Botões', icon: Grid, description: 'Botões de ação rápida' },
-        { id: 'send_template', title: 'Template', icon: FileText, description: 'Template aprovado' }
-      ]
-    },
-    instagram: {
-      name: 'Instagram',
-      icon: Instagram,
-      color: 'from-pink-500 to-pink-600',
-      triggers: [
-        { id: 'new_follower', title: 'Novo Seguidor', icon: Users, description: 'Quando alguém segue o perfil' },
-        { id: 'dm_received', title: 'DM Recebida', icon: MessageSquare, description: 'Mensagem direta recebida' },
-        { id: 'story_mention', title: 'Menção no Story', icon: Target, description: 'Quando mencionado em story' },
-        { id: 'comment', title: 'Comentário', icon: MessageSquare, description: 'Comentário em post' }
-      ],
-      actions: [
-        { id: 'send_dm', title: 'Enviar DM', icon: MessageSquare, description: 'Mensagem direta' },
-        { id: 'post_story', title: 'Postar Story', icon: Image, description: 'Story automático' },
-        { id: 'auto_reply', title: 'Resposta Automática', icon: RefreshCw, description: 'Resposta a comentários' },
-        { id: 'send_quick_reply', title: 'Resposta Rápida', icon: Zap, description: 'Resposta pré-definida' }
-      ]
-    },
-    email: {
-      name: 'Email',
-      icon: Mail,
+  const moduleCategories = {
+    triggers: {
+      name: 'Gatilhos',
+      icon: Zap,
       color: 'from-blue-500 to-blue-600',
-      triggers: [
-        { id: 'new_subscriber', title: 'Novo Inscrito', icon: Users, description: 'Nova inscrição na lista' },
-        { id: 'email_opened', title: 'Email Aberto', icon: Eye, description: 'Quando email é aberto' },
-        { id: 'link_clicked', title: 'Link Clicado', icon: Link, description: 'Click em link específico' },
-        { id: 'date_based', title: 'Data Específica', icon: Calendar, description: 'Em datas importantes' }
-      ],
-      actions: [
-        { id: 'send_email', title: 'Enviar Email', icon: Mail, description: 'Email personalizado' },
-        { id: 'send_template', title: 'Template HTML', icon: FileText, description: 'Template formatado' },
-        { id: 'add_to_list', title: 'Adicionar à Lista', icon: Plus, description: 'Segmentar contato' },
-        { id: 'remove_from_list', title: 'Remover da Lista', icon: X, description: 'Dessegmentar contato' },
-        { id: 'update_field', title: 'Atualizar Campo', icon: Settings, description: 'Modificar dados do contato' }
+      modules: [
+        { id: 'webhook', title: 'Webhook', icon: Globe, description: 'Receber dados via HTTP', color: 'from-blue-500 to-blue-600' },
+        { id: 'schedule', title: 'Agendamento', icon: Clock, description: 'Executar em horários específicos', color: 'from-purple-500 to-purple-600' },
+        { id: 'email_trigger', title: 'Email Recebido', icon: Mail, description: 'Quando um email é recebido', color: 'from-green-500 to-green-600' },
+        { id: 'file_watch', title: 'Monitorar Arquivo', icon: Eye, description: 'Quando arquivo é modificado', color: 'from-orange-500 to-orange-600' },
+        { id: 'database_trigger', title: 'Banco de Dados', icon: Database, description: 'Mudanças no banco', color: 'from-indigo-500 to-indigo-600' },
+        { id: 'api_trigger', title: 'API Call', icon: Cpu, description: 'Chamada de API externa', color: 'from-cyan-500 to-cyan-600' }
       ]
     },
-    sms: {
-      name: 'SMS',
-      icon: Phone,
+    actions: {
+      name: 'Ações',
+      icon: Target,
+      color: 'from-green-500 to-green-600',
+      modules: [
+        { id: 'send_email', title: 'Enviar Email', icon: Mail, description: 'Enviar email personalizado', color: 'from-blue-500 to-blue-600' },
+        { id: 'send_sms', title: 'Enviar SMS', icon: Phone, description: 'Enviar mensagem SMS', color: 'from-green-500 to-green-600' },
+        { id: 'send_whatsapp', title: 'WhatsApp', icon: MessageSquare, description: 'Enviar via WhatsApp', color: 'from-green-600 to-green-700' },
+        { id: 'create_record', title: 'Criar Registro', icon: Plus, description: 'Criar novo registro', color: 'from-purple-500 to-purple-600' },
+        { id: 'update_record', title: 'Atualizar Registro', icon: RefreshCw, description: 'Atualizar dados existentes', color: 'from-orange-500 to-orange-600' },
+        { id: 'delete_record', title: 'Deletar Registro', icon: Trash2, description: 'Remover registro', color: 'from-red-500 to-red-600' },
+        { id: 'api_call', title: 'Chamada API', icon: Send, description: 'Fazer requisição HTTP', color: 'from-cyan-500 to-cyan-600' },
+        { id: 'file_upload', title: 'Upload Arquivo', icon: UploadIcon, description: 'Fazer upload de arquivo', color: 'from-indigo-500 to-indigo-600' }
+      ]
+    },
+    conditions: {
+      name: 'Condições',
+      icon: Filter,
+      color: 'from-yellow-500 to-yellow-600',
+      modules: [
+        { id: 'if_condition', title: 'Se/Então', icon: Filter, description: 'Condição lógica simples', color: 'from-yellow-500 to-yellow-600' },
+        { id: 'switch', title: 'Switch', icon: GitBranch, description: 'Múltiplas condições', color: 'from-orange-500 to-orange-600' },
+        { id: 'text_parser', title: 'Analisar Texto', icon: FileText, description: 'Extrair dados do texto', color: 'from-green-500 to-green-600' },
+        { id: 'number_compare', title: 'Comparar Números', icon: BarChart3, description: 'Comparações numéricas', color: 'from-blue-500 to-blue-600' },
+        { id: 'date_compare', title: 'Comparar Datas', icon: Calendar, description: 'Comparações de data/hora', color: 'from-purple-500 to-purple-600' },
+        { id: 'regex_match', title: 'Regex', icon: Code, description: 'Expressões regulares', color: 'from-red-500 to-red-600' }
+      ]
+    },
+    integrations: {
+      name: 'Integrações',
+      icon: Layers,
       color: 'from-purple-500 to-purple-600',
-      triggers: [
-        { id: 'new_number', title: 'Novo Número', icon: Users, description: 'Novo número na base' },
-        { id: 'keyword_sms', title: 'Palavra-chave SMS', icon: Search, description: 'SMS com palavra específica' },
-        { id: 'opt_in', title: 'Opt-in', icon: Check, description: 'Confirmação de recebimento' },
-        { id: 'schedule', title: 'Agendamento', icon: Clock, description: 'Horário programado' }
-      ],
-      actions: [
-        { id: 'send_sms', title: 'Enviar SMS', icon: Phone, description: 'Mensagem de texto' },
-        { id: 'send_link', title: 'Enviar Link', icon: Link, description: 'SMS com link encurtado' },
-        { id: 'opt_out', title: 'Descadastrar', icon: X, description: 'Remover da lista SMS' }
+      modules: [
+        { id: 'google_sheets', title: 'Google Sheets', icon: Grid, description: 'Integração com planilhas', color: 'from-green-500 to-green-600' },
+        { id: 'slack', title: 'Slack', icon: MessageSquare, description: 'Enviar para Slack', color: 'from-purple-500 to-purple-600' },
+        { id: 'discord', title: 'Discord', icon: Users, description: 'Integração Discord', color: 'from-indigo-500 to-indigo-600' },
+        { id: 'telegram', title: 'Telegram', icon: Send, description: 'Bot do Telegram', color: 'from-blue-500 to-blue-600' },
+        { id: 'instagram', title: 'Instagram', icon: Instagram, description: 'API do Instagram', color: 'from-pink-500 to-pink-600' },
+        { id: 'facebook', title: 'Facebook', icon: Users, description: 'Facebook API', color: 'from-blue-600 to-blue-700' },
+        { id: 'twitter', title: 'Twitter/X', icon: Share2, description: 'Postar no Twitter', color: 'from-gray-700 to-gray-800' },
+        { id: 'linkedin', title: 'LinkedIn', icon: Users, description: 'LinkedIn API', color: 'from-blue-700 to-blue-800' }
+      ]
+    },
+    utilities: {
+      name: 'Utilitários',
+      icon: Settings,
+      color: 'from-gray-500 to-gray-600',
+      modules: [
+        { id: 'delay', title: 'Aguardar', icon: Clock, description: 'Pausa no fluxo', color: 'from-gray-500 to-gray-600' },
+        { id: 'iterator', title: 'Iterador', icon: RefreshCw, description: 'Processar lista de itens', color: 'from-blue-500 to-blue-600' },
+        { id: 'aggregator', title: 'Agregador', icon: Layers, description: 'Combinar múltiplos dados', color: 'from-green-500 to-green-600' },
+        { id: 'transformer', title: 'Transformador', icon: Zap, description: 'Transformar dados', color: 'from-purple-500 to-purple-600' },
+        { id: 'json_parser', title: 'JSON Parser', icon: Code, description: 'Analisar dados JSON', color: 'from-orange-500 to-orange-600' },
+        { id: 'csv_parser', title: 'CSV Parser', icon: FileText, description: 'Processar arquivos CSV', color: 'from-cyan-500 to-cyan-600' },
+        { id: 'error_handler', title: 'Tratamento de Erro', icon: AlertTriangle, description: 'Gerenciar erros', color: 'from-red-500 to-red-600' },
+        { id: 'logger', title: 'Logger', icon: FileText, description: 'Registrar atividades', color: 'from-indigo-500 to-indigo-600' }
+      ]
+    },
+    ai: {
+      name: 'Inteligência Artificial',
+      icon: Bot,
+      color: 'from-pink-500 to-pink-600',
+      modules: [
+        { id: 'openai_gpt', title: 'OpenAI GPT', icon: Bot, description: 'Processamento de linguagem', color: 'from-green-500 to-green-600' },
+        { id: 'claude', title: 'Claude AI', icon: Bot, description: 'Assistente Claude', color: 'from-orange-500 to-orange-600' },
+        { id: 'gemini', title: 'Google Gemini', icon: Bot, description: 'Google AI', color: 'from-blue-500 to-blue-600' },
+        { id: 'text_analysis', title: 'Análise de Texto', icon: FileText, description: 'Sentimento e entidades', color: 'from-purple-500 to-purple-600' },
+        { id: 'image_recognition', title: 'Reconhecimento de Imagem', icon: Eye, description: 'Análise de imagens', color: 'from-cyan-500 to-cyan-600' },
+        { id: 'speech_to_text', title: 'Fala para Texto', icon: Mic, description: 'Transcrição de áudio', color: 'from-red-500 to-red-600' },
+        { id: 'text_to_speech', title: 'Texto para Fala', icon: Volume2, description: 'Síntese de voz', color: 'from-indigo-500 to-indigo-600' },
+        { id: 'translation', title: 'Tradução', icon: Globe, description: 'Traduzir idiomas', color: 'from-teal-500 to-teal-600' }
       ]
     }
   };
 
-  const commonElements = [
-    { id: 'condition', title: 'Condição', icon: Filter, description: 'Decisão baseada em critérios', type: 'condition' },
-    { id: 'delay', title: 'Aguardar', icon: Clock, description: 'Pausa no fluxo', type: 'delay' },
-    { id: 'end', title: 'Finalizar', icon: Target, description: 'Fim do fluxo', type: 'end' }
-  ];
-
   const handleCreateFlow = () => {
-    setSelectedFlow(null);
-    setSelectedChannel(null);
+    const newFlow: Flow = {
+      id: Date.now().toString(),
+      name: 'Novo Fluxo',
+      description: 'Descrição do fluxo',
+      status: 'draft',
+      nodes: [],
+      connections: [],
+      createdAt: new Date().toISOString(),
+      lastModified: new Date().toISOString()
+    };
+    setSelectedFlow(newFlow);
     setIsBuilderOpen(true);
   };
 
   const handleEditFlow = (flow: Flow) => {
     setSelectedFlow(flow);
-    setSelectedChannel(flow.channel);
     setIsBuilderOpen(true);
   };
 
-  const handleChannelSelect = (channel: 'whatsapp' | 'instagram' | 'email' | 'sms') => {
-    setSelectedChannel(channel);
-  };
-
-  const handleDragStart = (e: React.DragEvent, nodeType: any) => {
-    setDraggedNode(nodeType);
+  const handleDragStart = (e: React.DragEvent, moduleData: any) => {
+    setDraggedNode(moduleData);
+    e.dataTransfer.effectAllowed = 'copy';
   };
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
   };
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
-    if (!draggedNode || !selectedChannel) return;
+    if (!draggedNode || !selectedFlow) return;
 
     const rect = canvasRef.current?.getBoundingClientRect();
     if (!rect) return;
@@ -267,27 +588,47 @@ const FlowBuilderPage: React.FC = () => {
 
     const newNode: FlowNode = {
       id: `node_${Date.now()}`,
-      type: draggedNode.type || 'action',
-      channel: selectedChannel,
-      position: { x, y },
+      type: draggedNode.id.includes('trigger') ? 'trigger' : 
+            draggedNode.id.includes('condition') || draggedNode.id.includes('if_') || draggedNode.id.includes('switch') ? 'condition' :
+            draggedNode.id === 'delay' ? 'delay' : 'action',
+      category: sidebarCategory as any,
+      position: { x: x - 60, y: y - 30 }, // Center the node on cursor
       data: {
         title: draggedNode.title,
         description: draggedNode.description,
         config: {},
         icon: draggedNode.icon,
-        color: channelConfigs[selectedChannel].color
+        color: draggedNode.color,
+        status: 'pending'
       },
-      connections: []
+      connections: {
+        input: draggedNode.id !== 'webhook' && draggedNode.id !== 'schedule', // Triggers don't have inputs
+        outputs: []
+      }
     };
 
-    if (selectedFlow) {
-      setSelectedFlow({
-        ...selectedFlow,
-        nodes: [...selectedFlow.nodes, newNode]
-      });
-    }
+    setSelectedFlow({
+      ...selectedFlow,
+      nodes: [...selectedFlow.nodes, newNode],
+      lastModified: new Date().toISOString()
+    });
 
     setDraggedNode(null);
+  };
+
+  const handleNodeMouseDown = (e: React.MouseEvent, nodeId: string) => {
+    e.stopPropagation();
+    const rect = canvasRef.current?.getBoundingClientRect();
+    if (!rect) return;
+
+    const node = selectedFlow?.nodes.find(n => n.id === nodeId);
+    if (!node) return;
+
+    setDraggedNodeId(nodeId);
+    setDragOffset({
+      x: (e.clientX - rect.left) / canvasScale - node.position.x - canvasOffset.x / canvasScale,
+      y: (e.clientY - rect.top) / canvasScale - node.position.y - canvasOffset.y / canvasScale
+    });
   };
 
   const handleCanvasMouseDown = (e: React.MouseEvent) => {
@@ -298,7 +639,22 @@ const FlowBuilderPage: React.FC = () => {
   };
 
   const handleCanvasMouseMove = (e: React.MouseEvent) => {
-    if (isDragging) {
+    if (draggedNodeId && selectedFlow) {
+      const rect = canvasRef.current?.getBoundingClientRect();
+      if (!rect) return;
+
+      const newX = (e.clientX - rect.left) / canvasScale - dragOffset.x - canvasOffset.x / canvasScale;
+      const newY = (e.clientY - rect.top) / canvasScale - dragOffset.y - canvasOffset.y / canvasScale;
+
+      setSelectedFlow({
+        ...selectedFlow,
+        nodes: selectedFlow.nodes.map(node =>
+          node.id === draggedNodeId
+            ? { ...node, position: { x: newX, y: newY } }
+            : node
+        )
+      });
+    } else if (isDragging) {
       setCanvasOffset({
         x: e.clientX - dragStart.x,
         y: e.clientY - dragStart.y
@@ -308,6 +664,7 @@ const FlowBuilderPage: React.FC = () => {
 
   const handleCanvasMouseUp = () => {
     setIsDragging(false);
+    setDraggedNodeId(null);
   };
 
   const handleZoomIn = () => {
@@ -319,27 +676,50 @@ const FlowBuilderPage: React.FC = () => {
   };
 
   const handleResetView = () => {
-    setCanvasOffset({ x: 0, y: 0 });
+    setCanvasOffset({ x: 400, y: 300 });
     setCanvasScale(1);
   };
 
+  const handleAutoLayout = () => {
+    if (!selectedFlow || selectedFlow.nodes.length === 0) return;
+
+    const nodeWidth = 200;
+    const nodeHeight = 120;
+    const horizontalSpacing = 300;
+    const verticalSpacing = 200;
+
+    // Simple grid layout
+    const updatedNodes = selectedFlow.nodes.map((node, index) => {
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      
+      return {
+        ...node,
+        position: {
+          x: col * horizontalSpacing,
+          y: row * verticalSpacing
+        }
+      };
+    });
+
+    setSelectedFlow({
+      ...selectedFlow,
+      nodes: updatedNodes
+    });
+  };
+
   const handleSaveFlow = () => {
-    if (!selectedFlow || !selectedChannel) return;
+    if (!selectedFlow) return;
 
     const updatedFlow = {
       ...selectedFlow,
       lastModified: new Date().toISOString()
     };
 
-    if (selectedFlow.id) {
+    if (flows.find(f => f.id === selectedFlow.id)) {
       setFlows(prev => prev.map(f => f.id === selectedFlow.id ? updatedFlow : f));
     } else {
-      const newFlow = {
-        ...updatedFlow,
-        id: Date.now().toString(),
-        createdAt: new Date().toISOString()
-      };
-      setFlows(prev => [...prev, newFlow]);
+      setFlows(prev => [...prev, updatedFlow]);
     }
 
     alert('Fluxo salvo com sucesso!');
@@ -349,13 +729,18 @@ const FlowBuilderPage: React.FC = () => {
     setIsTestMode(true);
     
     // Simulate test execution
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 3000));
     
     setTestResults({
       success: true,
-      executionTime: 1.2,
+      executionTime: 2.4,
       stepsExecuted: selectedFlow?.nodes.length || 0,
-      errors: []
+      errors: [],
+      data: {
+        processed: 15,
+        successful: 14,
+        failed: 1
+      }
     });
     
     setIsTestMode(false);
@@ -371,9 +756,96 @@ const FlowBuilderPage: React.FC = () => {
     });
   };
 
-  const getChannelIcon = (channel: string) => {
-    const config = channelConfigs[channel as keyof typeof channelConfigs];
-    return config ? config.icon : MessageSquare;
+  const handleNodeClick = (nodeId: string) => {
+    setSelectedNode(nodeId);
+    setShowNodeConfig(true);
+  };
+
+  const handleConnectionStart = (nodeId: string) => {
+    if (connectionMode) {
+      if (connectionStart && connectionStart !== nodeId) {
+        // Create connection
+        const newConnection: FlowConnection = {
+          id: `conn_${Date.now()}`,
+          source: connectionStart,
+          target: nodeId,
+          animated: true,
+          status: 'active'
+        };
+
+        if (selectedFlow) {
+          setSelectedFlow({
+            ...selectedFlow,
+            connections: [...selectedFlow.connections, newConnection]
+          });
+        }
+
+        setConnectionMode(false);
+        setConnectionStart(null);
+      } else {
+        setConnectionStart(nodeId);
+      }
+    }
+  };
+
+  const renderConnection = (connection: FlowConnection) => {
+    const sourceNode = selectedFlow?.nodes.find(n => n.id === connection.source);
+    const targetNode = selectedFlow?.nodes.find(n => n.id === connection.target);
+    
+    if (!sourceNode || !targetNode) return null;
+
+    const sourceX = sourceNode.position.x + 100; // Center of node
+    const sourceY = sourceNode.position.y + 60;
+    const targetX = targetNode.position.x + 100;
+    const targetY = targetNode.position.y + 60;
+
+    // Create curved path
+    const midX = (sourceX + targetX) / 2;
+    const midY = (sourceY + targetY) / 2;
+    const controlX1 = sourceX + (targetX - sourceX) * 0.3;
+    const controlY1 = sourceY;
+    const controlX2 = targetX - (targetX - sourceX) * 0.3;
+    const controlY2 = targetY;
+
+    const path = `M ${sourceX} ${sourceY} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${targetX} ${targetY}`;
+
+    const getConnectionColor = () => {
+      switch (connection.status) {
+        case 'success': return '#10B981';
+        case 'error': return '#EF4444';
+        case 'warning': return '#F59E0B';
+        default: return '#6B7280';
+      }
+    };
+
+    return (
+      <g key={connection.id}>
+        <path
+          d={path}
+          stroke={getConnectionColor()}
+          strokeWidth="2"
+          fill="none"
+          strokeDasharray={connection.animated ? "5,5" : "none"}
+          className={connection.animated ? "animate-pulse" : ""}
+        />
+        {/* Arrow head */}
+        <polygon
+          points={`${targetX-8},${targetY-4} ${targetX},${targetY} ${targetX-8},${targetY+4}`}
+          fill={getConnectionColor()}
+        />
+        {/* Connection status indicator */}
+        <circle
+          cx={midX}
+          cy={midY}
+          r="6"
+          fill={getConnectionColor()}
+          className="cursor-pointer hover:r-8 transition-all"
+          onClick={() => {
+            // Handle connection click
+          }}
+        />
+      </g>
+    );
   };
 
   const getStatusColor = (status: string) => {
@@ -384,6 +856,8 @@ const FlowBuilderPage: React.FC = () => {
         return 'text-yellow-400 bg-yellow-500/20 border-yellow-500/30';
       case 'draft':
         return 'text-gray-400 bg-gray-500/20 border-gray-500/30';
+      case 'error':
+        return 'text-red-400 bg-red-500/20 border-red-500/30';
       default:
         return 'text-gray-400 bg-gray-500/20 border-gray-500/30';
     }
@@ -398,7 +872,7 @@ const FlowBuilderPage: React.FC = () => {
 
   if (isBuilderOpen) {
     return (
-      <DashboardLayout currentPage="automation">
+      <DashboardLayout currentPage="flow-builder">
         <div className="h-screen flex flex-col">
           {/* Builder Header */}
           <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border-b border-white/20 p-4">
@@ -412,40 +886,69 @@ const FlowBuilderPage: React.FC = () => {
                 </button>
                 <div>
                   <h1 className="text-xl font-bold text-white">
-                    {selectedFlow ? `Editando: ${selectedFlow.name}` : 'Novo Fluxo de Automação'}
+                    {selectedFlow?.name || 'Novo Fluxo'}
                   </h1>
-                  {selectedChannel && (
-                    <div className="flex items-center space-x-2 mt-1">
-                      {React.createElement(channelConfigs[selectedChannel].icon, { className: "w-4 h-4 text-gray-400" })}
-                      <span className="text-gray-400 text-sm">{channelConfigs[selectedChannel].name}</span>
-                    </div>
-                  )}
+                  <p className="text-gray-400 text-sm">{selectedFlow?.description}</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-3">
+                {/* Zoom Controls */}
                 <div className="flex items-center space-x-2 bg-white/10 rounded-lg p-1">
                   <button
                     onClick={handleZoomOut}
                     className="p-2 hover:bg-white/10 rounded transition-colors"
+                    title="Zoom Out"
                   >
                     <ZoomOut className="w-4 h-4 text-white" />
                   </button>
-                  <span className="text-white text-sm px-2">{Math.round(canvasScale * 100)}%</span>
+                  <span className="text-white text-sm px-2 min-w-[60px] text-center">
+                    {Math.round(canvasScale * 100)}%
+                  </span>
                   <button
                     onClick={handleZoomIn}
                     className="p-2 hover:bg-white/10 rounded transition-colors"
+                    title="Zoom In"
                   >
                     <ZoomIn className="w-4 h-4 text-white" />
                   </button>
                   <button
                     onClick={handleResetView}
                     className="p-2 hover:bg-white/10 rounded transition-colors"
+                    title="Reset View"
                   >
                     <RotateCcw className="w-4 h-4 text-white" />
                   </button>
                 </div>
 
+                {/* Auto Layout */}
+                <button
+                  onClick={handleAutoLayout}
+                  className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg transition-colors duration-300"
+                  title="Auto Layout"
+                >
+                  <Grid className="w-4 h-4" />
+                  <span className="hidden sm:inline">Auto Layout</span>
+                </button>
+
+                {/* Connection Mode */}
+                <button
+                  onClick={() => {
+                    setConnectionMode(!connectionMode);
+                    setConnectionStart(null);
+                  }}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors duration-300 ${
+                    connectionMode 
+                      ? 'bg-[#FF7A00] text-white' 
+                      : 'bg-white/10 hover:bg-white/20 text-white'
+                  }`}
+                  title="Connection Mode"
+                >
+                  <GitBranch className="w-4 h-4" />
+                  <span className="hidden sm:inline">Conectar</span>
+                </button>
+
+                {/* Test Flow */}
                 <button
                   onClick={handleTestFlow}
                   disabled={isTestMode || !selectedFlow?.nodes.length}
@@ -459,6 +962,7 @@ const FlowBuilderPage: React.FC = () => {
                   <span>Testar</span>
                 </button>
 
+                {/* Save Flow */}
                 <button
                   onClick={handleSaveFlow}
                   className="flex items-center space-x-2 bg-[#FF7A00] hover:bg-[#FF9500] text-white px-4 py-2 rounded-lg transition-colors duration-300"
@@ -471,202 +975,259 @@ const FlowBuilderPage: React.FC = () => {
           </div>
 
           <div className="flex-1 flex">
-            {/* Channel Selection (if no channel selected) */}
-            {!selectedChannel && (
-              <div className="flex-1 flex items-center justify-center">
-                <div className="max-w-2xl mx-auto text-center">
-                  <h2 className="text-2xl font-bold text-white mb-6">Selecione o Canal de Comunicação</h2>
-                  <div className="grid grid-cols-2 gap-6">
-                    {Object.entries(channelConfigs).map(([key, config]) => (
-                      <button
-                        key={key}
-                        onClick={() => handleChannelSelect(key as any)}
-                        className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:border-[#FF7A00]/50 transition-all duration-300 transform hover:scale-105"
-                      >
-                        <div className={`w-16 h-16 bg-gradient-to-br ${config.color} rounded-xl flex items-center justify-center mx-auto mb-4`}>
-                          <config.icon className="w-8 h-8 text-white" />
+            {/* Sidebar with Modules */}
+            <div className="w-80 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border-r border-white/20 overflow-y-auto">
+              <div className="p-4">
+                <h3 className="text-white font-semibold mb-4">Módulos Disponíveis</h3>
+                
+                {/* Category Tabs */}
+                <div className="flex flex-wrap gap-1 mb-4">
+                  {Object.entries(moduleCategories).map(([key, category]) => (
+                    <button
+                      key={key}
+                      onClick={() => setSidebarCategory(key)}
+                      className={`px-3 py-1 rounded-lg text-xs font-medium transition-all duration-300 ${
+                        sidebarCategory === key
+                          ? 'bg-[#FF7A00] text-white'
+                          : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                      }`}
+                    >
+                      {category.name}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Modules */}
+                <div className="space-y-2">
+                  {moduleCategories[sidebarCategory as keyof typeof moduleCategories]?.modules.map((module) => (
+                    <div
+                      key={module.id}
+                      draggable
+                      onDragStart={(e) => handleDragStart(e, module)}
+                      className="bg-white/10 rounded-lg p-3 border border-white/20 hover:border-[#FF7A00]/50 transition-all duration-300 cursor-grab active:cursor-grabbing group"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-10 h-10 bg-gradient-to-br ${module.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                          <module.icon className="w-5 h-5 text-white" />
                         </div>
-                        <h3 className="text-white font-semibold text-lg">{config.name}</h3>
-                      </button>
-                    ))}
-                  </div>
+                        <div className="flex-1">
+                          <div className="text-white text-sm font-medium">{module.title}</div>
+                          <div className="text-gray-400 text-xs">{module.description}</div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            )}
+            </div>
 
-            {/* Builder Interface */}
-            {selectedChannel && (
-              <>
-                {/* Sidebar with Elements */}
-                <div className="w-80 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border-r border-white/20 overflow-y-auto">
-                  <div className="p-4">
-                    <h3 className="text-white font-semibold mb-4">Elementos Disponíveis</h3>
-                    
-                    {/* Triggers */}
-                    <div className="mb-6">
-                      <h4 className="text-gray-300 text-sm font-semibold mb-3">Gatilhos</h4>
-                      <div className="space-y-2">
-                        {channelConfigs[selectedChannel].triggers.map((trigger) => (
-                          <div
-                            key={trigger.id}
-                            draggable
-                            onDragStart={(e) => handleDragStart(e, { ...trigger, type: 'trigger' })}
-                            className="bg-white/10 rounded-lg p-3 border border-white/20 hover:border-[#FF7A00]/50 transition-all duration-300 cursor-grab active:cursor-grabbing"
-                          >
-                            <div className="flex items-center space-x-3">
-                              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                                <trigger.icon className="w-4 h-4 text-white" />
-                              </div>
-                              <div>
-                                <div className="text-white text-sm font-medium">{trigger.title}</div>
-                                <div className="text-gray-400 text-xs">{trigger.description}</div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div className="mb-6">
-                      <h4 className="text-gray-300 text-sm font-semibold mb-3">Ações</h4>
-                      <div className="space-y-2">
-                        {channelConfigs[selectedChannel].actions.map((action) => (
-                          <div
-                            key={action.id}
-                            draggable
-                            onDragStart={(e) => handleDragStart(e, { ...action, type: 'action' })}
-                            className="bg-white/10 rounded-lg p-3 border border-white/20 hover:border-[#FF7A00]/50 transition-all duration-300 cursor-grab active:cursor-grabbing"
-                          >
-                            <div className="flex items-center space-x-3">
-                              <div className={`w-8 h-8 bg-gradient-to-br ${channelConfigs[selectedChannel].color} rounded-lg flex items-center justify-center`}>
-                                <action.icon className="w-4 h-4 text-white" />
-                              </div>
-                              <div>
-                                <div className="text-white text-sm font-medium">{action.title}</div>
-                                <div className="text-gray-400 text-xs">{action.description}</div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Common Elements */}
-                    <div>
-                      <h4 className="text-gray-300 text-sm font-semibold mb-3">Controles</h4>
-                      <div className="space-y-2">
-                        {commonElements.map((element) => (
-                          <div
-                            key={element.id}
-                            draggable
-                            onDragStart={(e) => handleDragStart(e, element)}
-                            className="bg-white/10 rounded-lg p-3 border border-white/20 hover:border-[#FF7A00]/50 transition-all duration-300 cursor-grab active:cursor-grabbing"
-                          >
-                            <div className="flex items-center space-x-3">
-                              <div className="w-8 h-8 bg-gradient-to-br from-gray-500 to-gray-600 rounded-lg flex items-center justify-center">
-                                <element.icon className="w-4 h-4 text-white" />
-                              </div>
-                              <div>
-                                <div className="text-white text-sm font-medium">{element.title}</div>
-                                <div className="text-gray-400 text-xs">{element.description}</div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Canvas */}
-                <div className="flex-1 relative overflow-hidden">
-                  <div
-                    ref={canvasRef}
-                    className="w-full h-full bg-gradient-to-br from-[#1A0633] to-[#2D0B55] relative cursor-move"
-                    onDragOver={handleDragOver}
-                    onDrop={handleDrop}
-                    onMouseDown={handleCanvasMouseDown}
-                    onMouseMove={handleCanvasMouseMove}
-                    onMouseUp={handleCanvasMouseUp}
-                    onMouseLeave={handleCanvasMouseUp}
-                    style={{
-                      backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
-                      backgroundSize: `${20 * canvasScale}px ${20 * canvasScale}px`,
-                      backgroundPosition: `${canvasOffset.x}px ${canvasOffset.y}px`
-                    }}
+            {/* Canvas */}
+            <div className="flex-1 relative overflow-hidden">
+              <div
+                ref={canvasRef}
+                className="w-full h-full bg-gradient-to-br from-[#1A0633] to-[#2D0B55] relative cursor-move"
+                onDragOver={handleDragOver}
+                onDrop={handleDrop}
+                onMouseDown={handleCanvasMouseDown}
+                onMouseMove={handleCanvasMouseMove}
+                onMouseUp={handleCanvasMouseUp}
+                onMouseLeave={handleCanvasMouseUp}
+                style={{
+                  backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`,
+                  backgroundSize: `${30 * canvasScale}px ${30 * canvasScale}px`,
+                  backgroundPosition: `${canvasOffset.x}px ${canvasOffset.y}px`
+                }}
+              >
+                <div
+                  style={{
+                    transform: `translate(${canvasOffset.x}px, ${canvasOffset.y}px) scale(${canvasScale})`,
+                    transformOrigin: '0 0'
+                  }}
+                >
+                  {/* SVG for connections */}
+                  <svg
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ width: '100%', height: '100%' }}
                   >
-                    <div
-                      style={{
-                        transform: `translate(${canvasOffset.x}px, ${canvasOffset.y}px) scale(${canvasScale})`,
-                        transformOrigin: '0 0'
-                      }}
-                    >
-                      {/* Render Nodes */}
-                      {selectedFlow?.nodes.map((node) => (
-                        <div
-                          key={node.id}
-                          className="absolute bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:border-[#FF7A00]/50 transition-all duration-300 cursor-pointer group"
-                          style={{
-                            left: node.position.x,
-                            top: node.position.y,
-                            minWidth: '200px'
-                          }}
-                          onClick={() => {
-                            setSelectedNode(node.id);
-                            setShowNodeConfig(true);
-                          }}
-                        >
-                          <div className="flex items-center space-x-3 mb-2">
-                            <div className={`w-10 h-10 bg-gradient-to-br ${node.data.color} rounded-lg flex items-center justify-center`}>
-                              <node.data.icon className="w-5 h-5 text-white" />
-                            </div>
-                            <div className="flex-1">
-                              <div className="text-white font-medium">{node.data.title}</div>
-                              {node.data.description && (
-                                <div className="text-gray-400 text-xs">{node.data.description}</div>
-                              )}
-                            </div>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleDeleteNode(node.id);
-                              }}
-                              className="opacity-0 group-hover:opacity-100 text-red-400 hover:text-red-300 transition-all duration-300"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </div>
-                          
-                          {/* Connection Points */}
-                          <div className="flex justify-between">
-                            <div className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white"></div>
-                            <div className="w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                    {selectedFlow?.connections.map(renderConnection)}
+                  </svg>
 
-                    {/* Empty State */}
-                    {(!selectedFlow?.nodes.length) && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center">
-                          <MousePointer className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                          <h3 className="text-white text-xl font-semibold mb-2">Canvas Vazio</h3>
-                          <p className="text-gray-400">Arraste elementos da barra lateral para começar a construir seu fluxo</p>
+                  {/* Render Nodes */}
+                  {selectedFlow?.nodes.map((node) => (
+                    <div
+                      key={node.id}
+                      className={`absolute bg-white rounded-xl shadow-2xl border-2 transition-all duration-300 cursor-pointer group ${
+                        selectedNode === node.id 
+                          ? 'border-[#FF7A00] shadow-[#FF7A00]/20' 
+                          : 'border-gray-300 hover:border-[#FF7A00]/50'
+                      } ${
+                        connectionMode && hoveredNode === node.id 
+                          ? 'ring-4 ring-[#FF7A00]/30' 
+                          : ''
+                      }`}
+                      style={{
+                        left: node.position.x,
+                        top: node.position.y,
+                        width: '200px',
+                        height: '120px'
+                      }}
+                      onMouseDown={(e) => handleNodeMouseDown(e, node.id)}
+                      onClick={() => {
+                        if (connectionMode) {
+                          handleConnectionStart(node.id);
+                        } else {
+                          handleNodeClick(node.id);
+                        }
+                      }}
+                      onMouseEnter={() => setHoveredNode(node.id)}
+                      onMouseLeave={() => setHoveredNode(null)}
+                    >
+                      {/* Node Header */}
+                      <div className={`h-12 bg-gradient-to-r ${node.data.color} rounded-t-xl flex items-center justify-between px-4`}>
+                        <div className="flex items-center space-x-2">
+                          <node.data.icon className="w-5 h-5 text-white" />
+                          <span className="text-white font-medium text-sm">{node.data.title}</span>
                         </div>
+                        
+                        {/* Status indicator */}
+                        <div className={`w-3 h-3 rounded-full ${
+                          node.data.status === 'success' ? 'bg-green-400' :
+                          node.data.status === 'error' ? 'bg-red-400' :
+                          node.data.status === 'warning' ? 'bg-yellow-400' :
+                          'bg-gray-400'
+                        }`} />
                       </div>
-                    )}
+
+                      {/* Node Body */}
+                      <div className="p-4 h-16 flex items-center">
+                        <p className="text-gray-600 text-xs leading-tight">
+                          {node.data.description}
+                        </p>
+                      </div>
+
+                      {/* Connection Points */}
+                      <div className="absolute -left-2 top-1/2 transform -translate-y-1/2">
+                        {node.connections.input && (
+                          <div className="w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-lg" />
+                        )}
+                      </div>
+                      <div className="absolute -right-2 top-1/2 transform -translate-y-1/2">
+                        <div className="w-4 h-4 bg-green-500 rounded-full border-2 border-white shadow-lg" />
+                      </div>
+
+                      {/* Delete button */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDeleteNode(node.id);
+                        }}
+                        className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+
+                      {/* Connection mode indicator */}
+                      {connectionMode && connectionStart === node.id && (
+                        <div className="absolute inset-0 bg-[#FF7A00]/20 rounded-xl border-2 border-[#FF7A00] animate-pulse" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Empty State */}
+                {(!selectedFlow?.nodes.length) && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <MousePointer className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                      <h3 className="text-white text-xl font-semibold mb-2">Canvas Vazio</h3>
+                      <p className="text-gray-400 max-w-md">
+                        Arraste módulos da barra lateral para começar a construir seu fluxo de automação. 
+                        Use o modo de conexão para ligar os módulos.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Connection Mode Indicator */}
+                {connectionMode && (
+                  <div className="absolute top-4 left-4 bg-[#FF7A00] text-white px-4 py-2 rounded-lg shadow-lg">
+                    <div className="flex items-center space-x-2">
+                      <GitBranch className="w-4 h-4" />
+                      <span className="text-sm font-medium">
+                        {connectionStart ? 'Clique no módulo de destino' : 'Clique no módulo de origem'}
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Node Configuration Modal */}
+          {showNodeConfig && selectedNode && (
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-xl font-bold text-white">Configurar Módulo</h3>
+                  <button
+                    onClick={() => setShowNodeConfig(false)}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-white font-semibold mb-2">Nome do Módulo</label>
+                    <input
+                      type="text"
+                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-[#FF7A00] focus:outline-none transition-colors duration-300"
+                      placeholder="Nome personalizado"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-white font-semibold mb-2">Descrição</label>
+                    <textarea
+                      rows={3}
+                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-[#FF7A00] focus:outline-none transition-colors duration-300 resize-none"
+                      placeholder="Descrição do módulo"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-white font-semibold mb-2">Configurações</label>
+                    <div className="bg-white/5 rounded-lg p-4">
+                      <p className="text-gray-400 text-sm">
+                        As configurações específicas do módulo aparecerão aqui baseadas no tipo selecionado.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </>
-            )}
-          </div>
+
+                <div className="flex space-x-3 mt-6">
+                  <button
+                    onClick={() => setShowNodeConfig(false)}
+                    className="flex-1 bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-lg transition-colors duration-300"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    onClick={() => setShowNodeConfig(false)}
+                    className="flex-1 bg-[#FF7A00] hover:bg-[#FF9500] text-white px-4 py-3 rounded-lg transition-colors duration-300"
+                  >
+                    Salvar
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Test Results Modal */}
           {testResults && (
             <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 w-full max-w-md">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 w-full max-w-lg">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold text-white">Resultado do Teste</h3>
                   <button
@@ -680,7 +1241,7 @@ const FlowBuilderPage: React.FC = () => {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Check className="w-6 h-6 text-green-400" />
-                    <span className="text-white">Teste executado com sucesso</span>
+                    <span className="text-white">Fluxo executado com sucesso</span>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
@@ -689,10 +1250,26 @@ const FlowBuilderPage: React.FC = () => {
                       <div className="text-white font-semibold">{testResults.executionTime}s</div>
                     </div>
                     <div className="bg-white/5 rounded-lg p-3">
-                      <div className="text-gray-400 text-sm">Etapas Executadas</div>
+                      <div className="text-gray-400 text-sm">Módulos Executados</div>
                       <div className="text-white font-semibold">{testResults.stepsExecuted}</div>
                     </div>
+                    <div className="bg-white/5 rounded-lg p-3">
+                      <div className="text-gray-400 text-sm">Processados</div>
+                      <div className="text-white font-semibold">{testResults.data.processed}</div>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-3">
+                      <div className="text-gray-400 text-sm">Bem-sucedidos</div>
+                      <div className="text-green-400 font-semibold">{testResults.data.successful}</div>
+                    </div>
                   </div>
+
+                  {testResults.data.failed > 0 && (
+                    <div className="bg-red-500/20 rounded-lg p-3">
+                      <div className="text-red-300 text-sm font-semibold">
+                        {testResults.data.failed} operação(ões) falharam
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <button
@@ -710,13 +1287,13 @@ const FlowBuilderPage: React.FC = () => {
   }
 
   return (
-    <DashboardLayout currentPage="automation">
+    <DashboardLayout currentPage="flow-builder">
       <div className="space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">Construtor de Fluxos</h1>
-            <p className="text-gray-300">Crie automações multicanal inteligentes</p>
+            <h1 className="text-3xl font-bold text-white mb-2">Construtor de Fluxos Visuais</h1>
+            <p className="text-gray-300">Crie automações complexas com interface drag-and-drop</p>
           </div>
           
           <button
@@ -726,6 +1303,60 @@ const FlowBuilderPage: React.FC = () => {
             <Plus className="w-5 h-5" />
             <span>Novo Fluxo</span>
           </button>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                <Workflow className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-blue-400 text-sm font-semibold">Total</span>
+            </div>
+            <div className="text-2xl font-bold text-white mb-1">{flows.length}</div>
+            <div className="text-gray-300 text-sm">Fluxos Criados</div>
+          </div>
+
+          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
+                <Activity className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-green-400 text-sm font-semibold">Ativos</span>
+            </div>
+            <div className="text-2xl font-bold text-white mb-1">{flows.filter(f => f.status === 'active').length}</div>
+            <div className="text-gray-300 text-sm">Fluxos Ativos</div>
+          </div>
+
+          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#FF7A00] to-[#FF9500] rounded-xl flex items-center justify-center">
+                <TrendingUp className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-[#FF7A00] text-sm font-semibold">Execuções</span>
+            </div>
+            <div className="text-2xl font-bold text-white mb-1">
+              {flows.reduce((sum, flow) => sum + (flow.metrics?.executions || 0), 0).toLocaleString()}
+            </div>
+            <div className="text-gray-300 text-sm">Total de Execuções</div>
+          </div>
+
+          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
+                <Target className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-purple-400 text-sm font-semibold">Taxa de Sucesso</span>
+            </div>
+            <div className="text-2xl font-bold text-white mb-1">
+              {flows.length > 0 
+                ? (flows.reduce((sum, flow) => sum + (flow.metrics?.successRate || 0), 0) / flows.length).toFixed(1)
+                : 0
+              }%
+            </div>
+            <div className="text-gray-300 text-sm">Média de Sucesso</div>
+          </div>
         </div>
 
         {/* Filters */}
@@ -751,84 +1382,83 @@ const FlowBuilderPage: React.FC = () => {
               <option value="active" className="bg-[#2D0B55]">Ativo</option>
               <option value="paused" className="bg-[#2D0B55]">Pausado</option>
               <option value="draft" className="bg-[#2D0B55]">Rascunho</option>
+              <option value="error" className="bg-[#2D0B55]">Erro</option>
             </select>
           </div>
         </div>
 
         {/* Flows Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-          {filteredFlows.map((flow) => {
-            const ChannelIcon = getChannelIcon(flow.channel);
-            
-            return (
-              <div
-                key={flow.id}
-                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:border-[#FF7A00]/50 transition-all duration-300"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center space-x-3">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${channelConfigs[flow.channel].color} rounded-xl flex items-center justify-center`}>
-                      <ChannelIcon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-white font-semibold">{flow.name}</h3>
-                      <p className="text-gray-400 text-sm">{channelConfigs[flow.channel].name}</p>
-                    </div>
+          {filteredFlows.map((flow) => (
+            <div
+              key={flow.id}
+              className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:border-[#FF7A00]/50 transition-all duration-300"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#FF7A00] to-[#FF9500] rounded-xl flex items-center justify-center">
+                    <GitBranch className="w-6 h-6 text-white" />
                   </div>
-                  <div className={`px-2 py-1 rounded-full text-xs font-semibold border ${getStatusColor(flow.status)}`}>
-                    {flow.status.toUpperCase()}
+                  <div>
+                    <h3 className="text-white font-semibold">{flow.name}</h3>
+                    <p className="text-gray-400 text-sm">
+                      {flow.lastRun ? `Executado ${new Date(flow.lastRun).toLocaleDateString()}` : 'Nunca executado'}
+                    </p>
                   </div>
                 </div>
-
-                <p className="text-gray-300 text-sm mb-4">{flow.description}</p>
-
-                {flow.metrics && (
-                  <div className="grid grid-cols-3 gap-3 mb-4">
-                    <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <div className="text-white text-sm font-semibold">{flow.metrics.executions}</div>
-                      <div className="text-gray-400 text-xs">Execuções</div>
-                    </div>
-                    <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <div className="text-white text-sm font-semibold">{flow.metrics.successRate}%</div>
-                      <div className="text-gray-400 text-xs">Sucesso</div>
-                    </div>
-                    <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <div className="text-white text-sm font-semibold">{flow.metrics.avgDuration}s</div>
-                      <div className="text-gray-400 text-xs">Duração</div>
-                    </div>
-                  </div>
-                )}
-
-                <div className="flex space-x-2">
-                  <button
-                    onClick={() => handleEditFlow(flow)}
-                    className="flex-1 bg-[#FF7A00] hover:bg-[#FF9500] text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center space-x-1"
-                  >
-                    <Settings className="w-3 h-3" />
-                    <span>Editar</span>
-                  </button>
-                  
-                  <button className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300">
-                    <Copy className="w-3 h-3" />
-                  </button>
-                  
-                  <button className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300">
-                    <BarChart3 className="w-3 h-3" />
-                  </button>
+                <div className={`px-2 py-1 rounded-full text-xs font-semibold border ${getStatusColor(flow.status)}`}>
+                  {flow.status.toUpperCase()}
                 </div>
               </div>
-            );
-          })}
+
+              <p className="text-gray-300 text-sm mb-4">{flow.description}</p>
+
+              {flow.metrics && (
+                <div className="grid grid-cols-3 gap-3 mb-4">
+                  <div className="bg-white/5 rounded-lg p-2 text-center">
+                    <div className="text-white text-sm font-semibold">{flow.metrics.executions}</div>
+                    <div className="text-gray-400 text-xs">Execuções</div>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-2 text-center">
+                    <div className="text-white text-sm font-semibold">{flow.metrics.successRate}%</div>
+                    <div className="text-gray-400 text-xs">Sucesso</div>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-2 text-center">
+                    <div className="text-white text-sm font-semibold">{flow.metrics.avgDuration}s</div>
+                    <div className="text-gray-400 text-xs">Duração</div>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => handleEditFlow(flow)}
+                  className="flex-1 bg-[#FF7A00] hover:bg-[#FF9500] text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center space-x-1"
+                >
+                  <Settings className="w-3 h-3" />
+                  <span>Editar</span>
+                </button>
+                
+                <button className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300">
+                  <Copy className="w-3 h-3" />
+                </button>
+                
+                <button className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300">
+                  <BarChart3 className="w-3 h-3" />
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
 
         {filteredFlows.length === 0 && (
           <div className="text-center py-12">
-            <Zap className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+            <GitBranch className="w-16 h-16 text-gray-400 mx-auto mb-4" />
             <h3 className="text-xl font-medium text-white mb-2">Nenhum fluxo encontrado</h3>
             <p className="text-gray-400 mb-6">
               {searchTerm || filterStatus !== 'all' 
                 ? 'Tente ajustar os filtros de busca' 
-                : 'Crie seu primeiro fluxo de automação'
+                : 'Crie seu primeiro fluxo de automação visual'
               }
             </p>
             <button
