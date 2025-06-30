@@ -18,6 +18,7 @@ import {
   FileText
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import DemoModeIndicator from '../common/DemoModeIndicator';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -27,6 +28,7 @@ interface DashboardLayoutProps {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
   const { user, logout } = useAuth();
 
   const navigation = [
@@ -41,8 +43,34 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
     { name: 'Configurações', href: '/settings', icon: Settings, current: currentPage === 'settings' },
   ];
 
+  const notifications = [
+    {
+      id: '1',
+      title: 'Nova conexão WhatsApp',
+      message: 'Conexão "Vendas Principal" foi estabelecida com sucesso',
+      time: '2 min atrás',
+      type: 'success'
+    },
+    {
+      id: '2',
+      title: 'Limite de mensagens',
+      message: 'Você atingiu 80% do limite mensal de mensagens',
+      time: '1h atrás',
+      type: 'warning'
+    },
+    {
+      id: '3',
+      title: 'Backup concluído',
+      message: 'Backup automático realizado com sucesso',
+      time: '3h atrás',
+      type: 'info'
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#2D0B55] via-[#3D1565] to-[#2D0B55]">
+      <DemoModeIndicator />
+      
       {/* Mobile sidebar */}
       <div className={`fixed inset-0 z-50 lg:hidden ${sidebarOpen ? 'block' : 'hidden'}`}>
         <div className="fixed inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
@@ -134,10 +162,45 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
 
             <div className="flex items-center space-x-4">
               {/* Notifications */}
-              <button className="relative text-gray-300 hover:text-white transition-colors">
-                <Bell className="w-6 h-6" />
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#FF7A00] rounded-full"></span>
-              </button>
+              <div className="relative">
+                <button 
+                  onClick={() => setShowNotifications(!showNotifications)}
+                  className="relative text-gray-300 hover:text-white transition-colors"
+                >
+                  <Bell className="w-6 h-6" />
+                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#FF7A00] rounded-full"></span>
+                </button>
+
+                {showNotifications && (
+                  <div className="absolute right-0 mt-2 w-80 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl border border-white/20 shadow-2xl">
+                    <div className="p-4 border-b border-white/10">
+                      <h3 className="text-white font-semibold">Notificações</h3>
+                    </div>
+                    <div className="max-h-64 overflow-y-auto">
+                      {notifications.map((notification) => (
+                        <div key={notification.id} className="p-4 border-b border-white/10 hover:bg-white/5 transition-colors">
+                          <div className="flex items-start space-x-3">
+                            <div className={`w-2 h-2 rounded-full mt-2 ${
+                              notification.type === 'success' ? 'bg-green-500' :
+                              notification.type === 'warning' ? 'bg-yellow-500' : 'bg-blue-500'
+                            }`}></div>
+                            <div className="flex-1">
+                              <h4 className="text-white font-medium text-sm">{notification.title}</h4>
+                              <p className="text-gray-300 text-xs mt-1">{notification.message}</p>
+                              <span className="text-gray-400 text-xs">{notification.time}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="p-4">
+                      <button className="w-full text-[#FF7A00] hover:text-[#FF9500] text-sm font-semibold transition-colors">
+                        Ver todas as notificações
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               {/* User menu */}
               <div className="relative">

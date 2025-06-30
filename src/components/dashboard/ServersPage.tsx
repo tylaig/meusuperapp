@@ -15,15 +15,25 @@ import {
   MessageSquare,
   Users,
   Clock,
-  Zap
+  Zap,
+  Play,
+  Pause,
+  Trash2,
+  Edit,
+  Terminal,
+  Download
 } from 'lucide-react';
 import DashboardLayout from './DashboardLayout';
+import DemoAlert from '../common/DemoAlert';
+import { useDemoMode } from '../../hooks/useDemoMode';
 import { Server as ServerType } from '../../types';
 
 const ServersPage: React.FC = () => {
   const [servers, setServers] = useState<ServerType[]>([]);
   const [selectedServer, setSelectedServer] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const { showDemoAlert, demoAlertConfig, triggerDemoAlert, closeDemoAlert } = useDemoMode();
 
   useEffect(() => {
     // Mock data for servers
@@ -110,7 +120,53 @@ const ServersPage: React.FC = () => {
     setIsLoading(true);
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Update random data for demo
+    setServers(prev => prev.map(server => ({
+      ...server,
+      resources: {
+        ...server.resources,
+        cpu: { ...server.resources.cpu, usage: Math.max(10, Math.min(90, server.resources.cpu.usage + (Math.random() - 0.5) * 10)) },
+        memory: { ...server.resources.memory, percentage: Math.max(10, Math.min(90, server.resources.memory.percentage + (Math.random() - 0.5) * 5)) }
+      },
+      whatsapp: {
+        ...server.whatsapp,
+        sentToday: server.whatsapp.sentToday + Math.floor(Math.random() * 100),
+        receivedToday: server.whatsapp.receivedToday + Math.floor(Math.random() * 50)
+      }
+    })));
+    
     setIsLoading(false);
+  };
+
+  const handleServerAction = (action: string, serverId?: string) => {
+    const actions = {
+      'create-server': {
+        title: 'Criar Novo Servidor',
+        message: 'A criação de novos servidores requer configuração avançada de infraestrutura. Na versão completa, você pode provisionar servidores automaticamente em diferentes regiões.'
+      },
+      'restart-server': {
+        title: 'Reiniciar Servidor',
+        message: 'O reinício de servidores em produção requer confirmação adicional e pode afetar conexões ativas. Esta funcionalidade está disponível na versão completa.'
+      },
+      'delete-server': {
+        title: 'Excluir Servidor',
+        message: 'A exclusão de servidores é uma operação crítica que requer múltiplas confirmações. Esta funcionalidade está disponível apenas na versão completa.'
+      },
+      'server-logs': {
+        title: 'Logs do Servidor',
+        message: 'O acesso completo aos logs do servidor com filtros avançados e exportação está disponível na versão completa da plataforma.'
+      },
+      'server-terminal': {
+        title: 'Terminal do Servidor',
+        message: 'O acesso direto ao terminal do servidor é uma funcionalidade avançada disponível apenas na versão completa, com controles de segurança rigorosos.'
+      }
+    };
+
+    const config = actions[action as keyof typeof actions];
+    if (config) {
+      triggerDemoAlert(config.title, config.message);
+    }
   };
 
   const getStatusIcon = (status: string) => {
@@ -143,10 +199,6 @@ const ServersPage: React.FC = () => {
     }
   };
 
-  const formatBytes = (bytes: number) => {
-    return `${bytes.toFixed(1)} GB`;
-  };
-
   const formatNumber = (num: number) => {
     return new Intl.NumberFormat('pt-BR').format(num);
   };
@@ -175,7 +227,10 @@ const ServersPage: React.FC = () => {
               <span>Atualizar</span>
             </button>
             
-            <button className="flex items-center space-x-2 bg-[#FF7A00] hover:bg-[#FF9500] text-white px-4 py-2 rounded-lg transition-colors duration-300">
+            <button
+              onClick={() => handleServerAction('create-server')}
+              className="flex items-center space-x-2 bg-[#FF7A00] hover:bg-[#FF9500] text-white px-4 py-2 rounded-lg transition-colors duration-300"
+            >
               <Plus className="w-4 h-4" />
               <span>Novo Servidor</span>
             </button>
@@ -295,7 +350,7 @@ const ServersPage: React.FC = () => {
               </div>
 
               {/* Messages Today */}
-              <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center justify-between text-sm mb-4">
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   <span className="text-gray-300">Enviadas: {formatNumber(server.whatsapp.sentToday)}</span>
@@ -304,6 +359,66 @@ const ServersPage: React.FC = () => {
                   <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                   <span className="text-gray-300">Recebidas: {formatNumber(server.whatsapp.receivedToday)}</span>
                 </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex space-x-2">
+                {server.status === 'online' && (
+                  <>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleServerAction('restart-server', server.id);
+                      }}
+                      className="flex-1 bg-yellow-600 hover:bg-yellow-700 text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center space-x-1"
+                    >
+                      <Pause className="w-3 h-3" />
+                      <span>Reiniciar</span>
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleServerAction('server-terminal', server.id);
+                      }}
+                      className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300"
+                    >
+                      <Terminal className="w-3 h-3" />
+                    </button>
+                  </>
+                )}
+                
+                {server.status === 'offline' && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleServerAction('restart-server', server.id);
+                    }}
+                    className="flex-1 bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center space-x-1"
+                  >
+                    <Play className="w-3 h-3" />
+                    <span>Iniciar</span>
+                  </button>
+                )}
+                
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleServerAction('server-logs', server.id);
+                  }}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300"
+                >
+                  <BarChart3 className="w-3 h-3" />
+                </button>
+                
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleServerAction('delete-server', server.id);
+                  }}
+                  className="bg-red-600/20 hover:bg-red-600/30 text-red-400 px-3 py-2 rounded-lg text-sm transition-colors duration-300"
+                >
+                  <Trash2 className="w-3 h-3" />
+                </button>
               </div>
 
               {/* Expanded Details */}
@@ -332,11 +447,17 @@ const ServersPage: React.FC = () => {
                   </div>
 
                   <div className="flex space-x-2">
-                    <button className="flex-1 bg-[#FF7A00] hover:bg-[#FF9500] text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300">
-                      Gerenciar
+                    <button
+                      onClick={() => window.location.href = '/connections'}
+                      className="flex-1 bg-[#FF7A00] hover:bg-[#FF9500] text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300"
+                    >
+                      Ver Conexões
                     </button>
-                    <button className="flex-1 bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300">
-                      Logs
+                    <button
+                      onClick={() => window.location.href = '/logs'}
+                      className="flex-1 bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-sm transition-colors duration-300"
+                    >
+                      Ver Logs
                     </button>
                   </div>
                 </div>
@@ -349,7 +470,15 @@ const ServersPage: React.FC = () => {
         <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-xl font-bold text-white">Performance dos Servidores</h3>
-            <BarChart3 className="w-6 h-6 text-[#FF7A00]" />
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => handleServerAction('server-logs')}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <Download className="w-5 h-5" />
+              </button>
+              <BarChart3 className="w-6 h-6 text-[#FF7A00]" />
+            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -401,6 +530,14 @@ const ServersPage: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* Demo Alert */}
+        <DemoAlert
+          isOpen={showDemoAlert}
+          onClose={closeDemoAlert}
+          title={demoAlertConfig.title}
+          message={demoAlertConfig.message}
+        />
       </div>
     </DashboardLayout>
   );
