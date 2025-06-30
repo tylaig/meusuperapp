@@ -42,7 +42,8 @@ import {
   Layers,
   Grid,
   MousePointer,
-  Hand
+  Hand,
+  MessageSquare
 } from 'lucide-react';
 import DashboardLayout from './DashboardLayout';
 
