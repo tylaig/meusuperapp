@@ -208,7 +208,6 @@ import {
   Gooseberry,
   Elderberry,
   Currant,
-  Date,
   Fig,
   Raisin,
   Almond,
