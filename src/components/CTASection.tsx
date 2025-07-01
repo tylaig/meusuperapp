@@ -75,10 +75,10 @@ const CTASection: React.FC = () => {
         }`}>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
             Sua Análise Gratuita em
-            <span className="block text-[#FF7A00]">Menos de 2 Minutos</span>
+            <span className="block text-[#FF7A00]">2 Minutos</span>
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-6 sm:mb-8 px-4">
-            100% Sem Compromisso • Sem Ligações Insistentes • Resultados Garantidos
+            Rápido, seguro, sem compromisso
           </p>
           
           {/* Trust indicators */}

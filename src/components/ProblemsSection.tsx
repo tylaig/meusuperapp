@@ -25,21 +25,21 @@ const ProblemsSection: React.FC = () => {
   const problems = [
     {
       icon: Moon,
-      title: "Enquanto você descansa, suas vendas evaporam.",
-      subtitle: "67% dos leads chegam fora do horário comercial e são ignorados, gerando uma perda média de R$ 15.000/mês para pequenas empresas.",
-      color: "from-red-500 to-red-600"
+      title: '67% dos leads chegam fora do horário comercial e são ignorados',
+      subtitle: '',
+      color: 'from-red-500 to-red-600'
     },
     {
       icon: AlertTriangle,
-      title: "2/3 de leads noturnos ignorados = faturamento letal.",
-      subtitle: "Cada lead não respondido em até 5 minutos reduz em 400% a chance de conversão. Sua concorrência está pegando seus clientes.",
-      color: "from-orange-500 to-orange-600"
+      title: 'Cada minuto sem resposta reduz sua conversão em 400%',
+      subtitle: '',
+      color: 'from-orange-500 to-orange-600'
     },
     {
       icon: Database,
-      title: "CRM fragmentado: dados perdidos, oportunidades mortas.",
-      subtitle: "Informações espalhadas em WhatsApp, Instagram, email criam um caos que mata 43% das oportunidades de venda.",
-      color: "from-purple-500 to-purple-600"
+      title: 'CRM fragmentado elimina 43% das suas oportunidades',
+      subtitle: '',
+      color: 'from-purple-500 to-purple-600'
     }
   ];
 
@@ -48,11 +48,10 @@ const ProblemsSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
-            O Que Está <span className="text-red-400">Matando</span> Suas Vendas
+            🛑 Não Deixe Mais Dinheiro na Mesa
           </h2>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
-            Enquanto você lê isso, potenciais clientes estão tentando te encontrar. 
-            <span className="text-[#FF7A00] font-semibold"> Mas você não está lá.</span>
+            Enquanto você descansa, sua concorrência fecha negócios.
           </p>
         </div>
 
@@ -98,9 +97,9 @@ const ProblemsSection: React.FC = () => {
 
         <div className="text-center mt-12 sm:mt-16">
           <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-xl sm:rounded-2xl p-6 sm:p-8 max-w-2xl mx-auto border border-red-500/30">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
-              💸 Prejuízo Médio: R$ 89.000/ano
-            </h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
+            💸 Perda média anual: R$ 89.000
+          </h3>
             <p className="text-gray-300 text-base sm:text-lg">
               É isso que uma empresa perde anualmente por não ter atendimento 24/7 automatizado.
             </p>
