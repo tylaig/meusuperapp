@@ -116,13 +116,12 @@ const HeroSection: React.FC = () => {
               </div>
               
               <h1 className="text-3xl xl:text-4xl 2xl:text-5xl font-bold text-white leading-tight">
-                Suas Vendas
-                <span className="text-[#FF7A00] block">Não Dormem</span>
+                🚀 Escale Seu Negócio com Automações e Inteligência Artificial
               </h1>
-              
+
               <p className="text-lg xl:text-xl text-gray-200 leading-relaxed pr-4">
-                Agentes para WhatsApp, Instagram, Email e SMS — 
-                <span className="text-[#FF7A00] font-semibold"> sem codar e com serviço totalmente personalizado para o seu negócio.</span>
+                Transforme processos, aumente suas vendas e conquiste resultados extraordinários com nosso
+                <span className="text-[#FF7A00] font-semibold"> Ecossistema Inteligente sob medida.</span>
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
@@ -204,13 +203,12 @@ const HeroSection: React.FC = () => {
             </div>
             
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight px-2">
-              Suas Vendas
-              <span className="text-[#FF7A00] block">Não Dormem</span>
+              🚀 Escale Seu Negócio com Automações e Inteligência Artificial
             </h1>
-            
+
             <p className="text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed px-4">
-              Agentes para WhatsApp, Instagram, Email e SMS — 
-              <span className="text-[#FF7A00] font-semibold"> sem codar e com serviço totalmente personalizado para o seu negócio.</span>
+              Transforme processos, aumente suas vendas e conquiste resultados extraordinários com nosso
+              <span className="text-[#FF7A00] font-semibold"> Ecossistema Inteligente sob medida.</span>
             </p>
 
             {/* Mobile Dashboard */}

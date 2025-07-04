@@ -20,8 +20,7 @@ const Footer: React.FC = () => {
               <span className="text-xl sm:text-2xl font-bold text-white">meusuper.app</span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-4 sm:mb-6 max-w-md text-center md:text-left mx-auto md:mx-0 text-sm sm:text-base">
-              Transformamos empresas com IA de vendas 24/7. Mais de 100 clientes já recuperaram 
-              milhões em vendas perdidas com nossa tecnologia personalizada.
+              Quem Já Confia no Nosso Ecossistema: +100 empresas satisfeitas com resultados reais.
             </p>
             
             {/* Founder */}
@@ -86,7 +85,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-center space-x-3 justify-center md:justify-start">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF7A00] flex-shrink-0" />
-                <span className="text-gray-300 text-sm sm:text-base">(11) 99999-9999</span>
+                <span className="text-gray-300 text-sm sm:text-base">(31) 998710945</span>
               </li>
               <li className="flex items-center space-x-3 justify-center md:justify-start">
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF7A00] flex-shrink-0" />

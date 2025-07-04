@@ -26,83 +26,83 @@ const UseCasesSection: React.FC = () => {
     {
       icon: ShoppingCart,
       title: "E-commerce",
-      description: "Recupere carrinho abandonado, tire dúvidas sobre produtos e processe pedidos automaticamente.",
-      benefits: ["↗ +87% conversão", "⚡ Resposta instantânea", "🛒 Vendas 24/7"],
+      description: "+87% conversões",
+      benefits: [],
       color: "from-blue-500 to-blue-600"
     },
     {
       icon: Monitor,
       title: "SaaS",
-      description: "Onboarding automático, suporte técnico e retenção de clientes com IA especializada.",
-      benefits: ["🚀 -73% churn", "⭐ +94% satisfação", "📈 Upsell automático"],
+      description: "-73% churn",
+      benefits: [],
       color: "from-green-500 to-green-600"
     },
     {
       icon: GraduationCap,
       title: "Mentoria",
-      description: "Qualifique leads, agende calls e apresente seus programas de mentoria de forma personalizada.",
-      benefits: ["📞 +156% calls agendadas", "🎯 Leads qualificados", "💰 Ticket médio maior"],
+      description: "+156% agendamentos",
+      benefits: [],
       color: "from-purple-500 to-purple-600"
     },
     {
       icon: BookOpen,
-      title: "Infoprodutores",  
-      description: "Venda cursos, ebooks e consultorias com funil completo desde a captação até o fechamento.",
-      benefits: ["📚 +234% vendas", "🎓 Educação do lead", "🔄 Follow-up inteligente"],
+      title: "Infoprodutores",
+      description: "+234% vendas",
+      benefits: [],
       color: "from-orange-500 to-orange-600"
     },
     {
       icon: Package,
       title: "Produtos Físicos",
-      description: "Catálogo inteligente, rastreamento de pedidos e atendimento pós-venda automatizado.",
-      benefits: ["📦 Envios otimizados", "🔍 Catálogo dinâmico", "💬 Suporte 24/7"],
+      description: "Atendimento 24/7",
+      benefits: [],
       color: "from-red-500 to-red-600"
     },
     {
       icon: Stethoscope,
       title: "Clínicas & Saúde",
-      description: "Agendamento inteligente, lembretes automáticos e triagem inicial de pacientes 24/7.",
-      benefits: ["📅 +89% agendamentos", "⏰ Redução de faltas", "🏥 Triagem automática"],
+      description: "+89% agendamentos",
+      benefits: [],
       color: "from-teal-500 to-teal-600"
     },
     {
       icon: Home,
       title: "Imobiliárias",
-      description: "Qualificação de interessados, agendamento de visitas e acompanhamento pós-venda.",
-      benefits: ["🏠 +145% visitas", "💼 Leads qualificados", "📋 Follow-up automático"],
+      description: "+145% visitas",
+      benefits: [],
       color: "from-indigo-500 to-indigo-600"
     },
     {
       icon: Briefcase,
       title: "Consultoria",
-      description: "Captação de clientes, apresentação de serviços e agendamento de reuniões estratégicas.",
-      benefits: ["🎯 +178% reuniões", "💡 Apresentação automática", "📊 Relatórios detalhados"],
+      description: "+178% reuniões",
+      benefits: [],
       color: "from-cyan-500 to-cyan-600"
     },
     {
       icon: Utensils,
       title: "Restaurantes",
-      description: "Pedidos via WhatsApp, reservas automáticas e programa de fidelidade inteligente.",
-      benefits: ["🍕 +92% pedidos online", "🪑 Reservas otimizadas", "⭐ Fidelização automática"],
+      description: "+92% pedidos online",
+      benefits: [],
       color: "from-yellow-500 to-yellow-600"
     }
   ];
 
   const additionalServices = [
     {
-      title: "Serviços Personalizados & Software Sob Medida",
-      description: "Criamos soluções tailor-made: automações, chatbots e softwares para desafios específicos da sua empresa.",
-      icon: "🛠️"
+      title: 'Soluções 100% Customizadas',
+      description: 'Automatizações específicas e exclusivas para impulsionar seu negócio ao próximo nível.',
+      icon: '🛠️'
     },
     {
-      title: "Planos por Tier",
-      description: "Tier 1: Automações básicas + IA | Tier 2: Automações avançadas + IA omnicanal (limites personalizados) + tokens pagos por nós",
-      icon: "📊"
+      title: 'Programa de Parcerias',
+      description: 'Receba comissões indicando nosso Ecossistema Inteligente.',
+      icon: '🤝'
     },
     {
-      title: "Parcerias & Afiliados",
-      description: "Participe do nosso programa de parcerias e receba comissões recorrentes ao indicar nossos serviços.",
-      icon: "🤝"
+      title: 'Descubra Quanto Você Está Perdendo',
+      description: 'Calcule agora mesmo suas perdas sem nosso Ecossistema de IA.',
+      icon: '💡'
     }
   ];
 
@@ -111,7 +111,7 @@ const UseCasesSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 px-2">
-            Funciona para <span className="text-[#FF7A00]">Qualquer</span> Negócio
+            Nosso Ecossistema é Para Todos os Setores
           </h2>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
             Nossa IA se adapta ao seu modelo de negócio e escala suas vendas independentemente do setor
@@ -203,7 +203,7 @@ const UseCasesSection: React.FC = () => {
               onClick={() => document.getElementById('cta-final')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-[#FF7A00] hover:bg-[#FF9500] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 transform hover:scale-105"
             >
-              Conversar com Especialista
+              Fale com Especialista Agora
             </button>
           </div>
         </div>
