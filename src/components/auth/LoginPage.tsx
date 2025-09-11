@@ -14,8 +14,6 @@ const LoginPage: React.FC = () => {
   const [forgotEmail, setForgotEmail] = useState('');
   const [error, setError] = useState('');
 
-  const { login, forgotPassword, socialLogin } = useAuth();
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
@@ -31,9 +29,19 @@ const LoginPage: React.FC = () => {
     setError('');
 
     try {
-      await login(formData.email, formData.password, formData.rememberMe);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Erro no login');
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (error) throw error;
+
+      if (data.user) {
+        // Redirect to dashboard
+        window.location.href = '/dashboard';
+      }
+    } catch (err: any) {
+      setError(err.message || 'Erro no login');
     } finally {
       setIsLoading(false);
     }
@@ -44,12 +52,17 @@ const LoginPage: React.FC = () => {
     setIsLoading(true);
 
     try {
-      await forgotPassword(forgotEmail);
+      const { error } = await supabase.auth.resetPasswordForEmail(forgotEmail, {
+        redirectTo: `${window.location.origin}/reset-password`,
+      });
+      
+      if (error) throw error;
+      
       alert('Email de recuperação enviado!');
       setShowForgotPassword(false);
       setForgotEmail('');
-    } catch (err) {
-      setError('Erro ao enviar email de recuperação');
+    } catch (err: any) {
+      setError(err.message || 'Erro ao enviar email de recuperação');
     } finally {
       setIsLoading(false);
     }
@@ -60,9 +73,16 @@ const LoginPage: React.FC = () => {
     setError('');
 
     try {
-      await socialLogin(provider);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : `Erro no login com ${provider}`);
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: provider === 'google' ? 'google' : 'facebook',
+        options: {
+          redirectTo: `${window.location.origin}/dashboard`,
+        }
+      });
+
+      if (error) throw error;
+    } catch (err: any) {
+      setError(err.message || `Erro no login com ${provider}`);
     } finally {
       setIsLoading(false);
     }
@@ -73,8 +93,20 @@ const LoginPage: React.FC = () => {
     setError('');
 
     try {
-      await login('demo@meusuper.app', 'demo123', false);
-    } catch (err) {
+      // For demo, we'll create a temporary session
+      // In production, you might want to have actual demo accounts
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: 'demo@meusuper.app',
+        password: 'demo123456',
+      });
+
+      if (error) {
+        // If demo account doesn't exist, show message
+        setError('Conta de demonstração não disponível. Use o cadastro normal.');
+      } else if (data.user) {
+        window.location.href = '/dashboard';
+      }
+    } catch (err: any) {
       setError('Erro no login de demonstração');
     } finally {
       setIsLoading(false);
