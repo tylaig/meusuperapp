@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Supabase Auth Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Supabase Auth Demo</h1>
+
+      <section id="signed-out" class="card">
+        <h2>Entrar / Cadastrar</h2>
+
+        <div class="grid">
+          <div class="panel">
+            <h3>Criar conta (Email + Senha)</h3>
+            <form id="signup-form">
+              <label>Email
+                <input id="signup-email" type="email" placeholder="seu@exemplo.com" required />
+              </label>
+              <label>Senha
+                <input id="signup-password" type="password" placeholder="••••••••" required />
+              </label>
+              <button type="submit">Cadastrar</button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h3>Entrar (Email + Senha)</h3>
+            <form id="signin-form">
+              <label>Email
+                <input id="signin-email" type="email" placeholder="seu@exemplo.com" required />
+              </label>
+              <label>Senha
+                <input id="signin-password" type="password" placeholder="••••••••" required />
+              </label>
+              <button type="submit">Entrar</button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h3>Magic Link (Email)</h3>
+            <form id="magic-form">
+              <label>Email
+                <input id="magic-email" type="email" placeholder="seu@exemplo.com" required />
+              </label>
+              <button type="submit">Enviar Magic Link</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="oauth">
+          <button id="google-button" class="btn-google">Continuar com Google</button>
+        </div>
+
+        <div id="auth-error" class="error" role="alert" aria-live="polite"></div>
+        <div id="auth-info" class="info"></div>
+      </section>
+
+      <section id="signed-in" class="card hidden">
+        <h2>Sessão ativa</h2>
+        <div class="grid">
+          <div class="panel">
+            <h3>Usuário</h3>
+            <pre id="user-json" class="code"></pre>
+          </div>
+          <div class="panel">
+            <h3>Perfil (opcional)</h3>
+            <pre id="profile-json" class="code"></pre>
+            <button id="refresh-profile">Atualizar Perfil</button>
+          </div>
+        </div>
+        <div>
+          <button id="signout-button" class="btn-danger">Sair</button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+  </html>
+
