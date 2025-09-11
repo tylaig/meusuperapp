@@ -26,6 +26,8 @@ import {
   GitBranch
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import { useWorkspace } from '../../contexts/WorkspaceContext';
+import WorkspaceSelector from '../workspace/WorkspaceSelector';
 import DemoModeIndicator from '../common/DemoModeIndicator';
 
 interface DashboardLayoutProps {
@@ -38,6 +40,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const { user, logout } = useAuth();
+  const { currentWorkspace } = useWorkspace();
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: BarChart3, current: currentPage === 'dashboard' },
@@ -108,9 +111,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
             </button>
           </div>
           <nav className="flex-1 overflow-y-auto p-4 space-y-2">
-            {navigation.map((item) => {
+            {navigation.map((item, index) => {
               if (item.name === '---') {
-                return <div key={item.href} className="h-px bg-white/10 my-4"></div>;
+                return <div key={`divider-${index}`} className="h-px bg-white/10 my-4"></div>;
               }
               
               return (
@@ -139,12 +142,22 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
             <div className="w-10 h-10 bg-gradient-to-br from-[#FF7A00] to-[#FF9500] rounded-xl flex items-center justify-center">
               <Zap className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold text-white">meusuper.app</span>
+            <div>
+              <span className="text-xl font-bold text-white">meusuper.app</span>
+              {currentWorkspace && (
+                <div className="text-xs text-gray-400 truncate">{currentWorkspace.name}</div>
+              )}
+            </div>
+              <span className="text-xl font-bold text-white">meusuper.app</span>
+              {currentWorkspace && (
+                <div className="text-xs text-gray-400 truncate">{currentWorkspace.name}</div>
+              )}
+            </div>
           </div>
           <nav className="flex-1 overflow-y-auto p-6 space-y-2">
-            {navigation.map((item) => {
+            {navigation.map((item, index) => {
               if (item.name === '---') {
-                return <div key={item.href} className="h-px bg-white/10 my-4"></div>;
+                return <div key={`divider-${index}`} className="h-px bg-white/10 my-4"></div>;
               }
               
               return (
@@ -178,6 +191,11 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, currentPage
               >
                 <Menu className="w-6 h-6" />
               </button>
+              
+              {/* Workspace Selector */}
+              <div className="hidden sm:block">
+                <WorkspaceSelector />
+              </div>
               
               {/* Search */}
               <div className="hidden sm:block relative">

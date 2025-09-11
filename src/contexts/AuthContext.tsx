@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { supabase } from '../lib/supabase';
 import { User, AuthState } from '../types';
 
 interface AuthContextType extends AuthState {
@@ -30,32 +31,65 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   });
 
   useEffect(() => {
-    // Check for existing authentication
-    const checkAuth = () => {
-      const token = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
-      const userData = localStorage.getItem('userData') || sessionStorage.getItem('userData');
-      
-      if (token && userData) {
-        try {
-          const user = JSON.parse(userData);
+    // Check for existing Supabase session
+    const checkAuth = async () => {
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+        
+        if (error) {
+          console.error('Error getting session:', error);
+          setAuthState({
+            user: null,
+            isAuthenticated: false,
+            isLoading: false,
+          });
+          return;
+        }
+
+        if (session?.user) {
+          // Get user profile
+          const { data: profile, error: profileError } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', session.user.id)
+            .single();
+
+          if (profileError) {
+            console.error('Error getting profile:', profileError);
+            setAuthState({
+              user: null,
+              isAuthenticated: false,
+              isLoading: false,
+            });
+            return;
+          }
+
+          const user: User = {
+            id: profile.id,
+            name: profile.full_name || profile.email.split('@')[0],
+            email: profile.email,
+            avatar: profile.avatar_url,
+            role: 'owner', // Will be determined by workspace context
+            organizationId: '', // Will be set when workspace is selected
+            permissions: ['*'],
+            createdAt: profile.created_at,
+            lastLogin: new Date().toISOString(),
+          };
+
           setAuthState({
             user,
             isAuthenticated: true,
             isLoading: false,
           });
-        } catch (error) {
-          // Invalid stored data, clear it
-          localStorage.removeItem('authToken');
-          localStorage.removeItem('userData');
-          sessionStorage.removeItem('authToken');
-          sessionStorage.removeItem('userData');
+        } else {
           setAuthState({
             user: null,
             isAuthenticated: false,
             isLoading: false,
           });
         }
-      } else {
+      } catch (error) {
+        console.error('Auth check error:', error);
         setAuthState({
           user: null,
           isAuthenticated: false,
@@ -65,116 +99,117 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     };
 
     checkAuth();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        if (event === 'SIGNED_IN' && session?.user) {
+          checkAuth();
+        } else if (event === 'SIGNED_OUT') {
+          setAuthState({
+            user: null,
+            isAuthenticated: false,
+            isLoading: false,
+          });
+        }
+      }
+    );
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const login = async (email: string, password: string, rememberMe = false) => {
     setAuthState(prev => ({ ...prev, isLoading: true }));
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Mock user data
-      const user: User = {
-        id: '1',
-        name: 'João Silva',
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
-        avatar: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-        role: 'owner',
-        organizationId: 'org-1',
-        permissions: ['*'],
-        createdAt: new Date().toISOString(),
-        lastLogin: new Date().toISOString(),
-      };
-
-      const token = 'mock-jwt-token';
-      
-      if (rememberMe) {
-        localStorage.setItem('authToken', token);
-        localStorage.setItem('userData', JSON.stringify(user));
-      } else {
-        sessionStorage.setItem('authToken', token);
-        sessionStorage.setItem('userData', JSON.stringify(user));
-      }
-
-      setAuthState({
-        user,
-        isAuthenticated: true,
-        isLoading: false,
+        password,
       });
 
-      // Redirect to dashboard
-      window.location.href = '/dashboard';
+      if (error) throw error;
+
+      if (data.user) {
+        // Get user profile
+        const { data: profile, error: profileError } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', data.user.id)
+          .single();
+
+        if (profileError) throw profileError;
+
+        const user: User = {
+          id: profile.id,
+          name: profile.full_name || profile.email.split('@')[0],
+          email: profile.email,
+          avatar: profile.avatar_url,
+          role: 'owner',
+          organizationId: '',
+          permissions: ['*'],
+          createdAt: profile.created_at,
+          lastLogin: new Date().toISOString(),
+        };
+
+        setAuthState({
+          user,
+          isAuthenticated: true,
+          isLoading: false,
+        });
+
+        // Redirect to dashboard
+        window.location.href = '/dashboard';
+      }
     } catch (error) {
       setAuthState({
         user: null,
         isAuthenticated: false,
         isLoading: false,
       });
-      throw new Error('Credenciais inválidas');
+      throw error;
     }
   };
 
   const logout = () => {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('userData');
-    sessionStorage.removeItem('authToken');
-    sessionStorage.removeItem('userData');
-    
-    setAuthState({
-      user: null,
-      isAuthenticated: false,
-      isLoading: false,
+    supabase.auth.signOut().then(() => {
+      setAuthState({
+        user: null,
+        isAuthenticated: false,
+        isLoading: false,
+      });
+      
+      // Redirect to home
+      window.location.href = '/';
     });
-
-    // Redirect to home
-    window.location.href = '/';
   };
 
   const forgotPassword = async (email: string) => {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log('Password reset email sent to:', email);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    
+    if (error) throw error;
   };
 
   const socialLogin = async (provider: 'google' | 'facebook') => {
     setAuthState(prev => ({ ...prev, isLoading: true }));
     
     try {
-      // Simulate social login
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      const user: User = {
-        id: '1',
-        name: 'João Silva',
-        email: 'joao@meusuper.app',
-        avatar: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-        role: 'owner',
-        organizationId: 'org-1',
-        permissions: ['*'],
-        createdAt: new Date().toISOString(),
-        lastLogin: new Date().toISOString(),
-      };
-
-      const token = 'mock-social-jwt-token';
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('userData', JSON.stringify(user));
-
-      setAuthState({
-        user,
-        isAuthenticated: true,
-        isLoading: false,
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: provider === 'google' ? 'google' : 'facebook',
+        options: {
+          redirectTo: `${window.location.origin}/dashboard`,
+        }
       });
 
-      // Redirect to dashboard
-      window.location.href = '/dashboard';
+      if (error) throw error;
     } catch (error) {
       setAuthState({
         user: null,
         isAuthenticated: false,
         isLoading: false,
       });
-      throw new Error(`Erro no login com ${provider}`);
+      throw error;
     }
   };
 

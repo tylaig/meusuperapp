@@ -25,30 +25,30 @@ const HowItWorksSection: React.FC = () => {
   const steps = [
     {
       icon: Search,
-      number: "01",
-      title: "Análise Gratuita",
-      description: "Identificamos suas perdas atuais e oportunidades em menos de 48h. Sem compromisso, com relatório detalhado.",
-      duration: "48h"
+      number: '01',
+      title: 'Diagnóstico Completo e Gratuito',
+      description: 'Identificamos seus gargalos e oportunidades.',
+      duration: 'até 48h'
     },
     {
       icon: Settings,
-      number: "02", 
-      title: "Configuração Estratégica",
-      description: "Criamos sua IA personalizada com base no seu negócio, produtos e linguagem da sua marca.",
+      number: "02",
+      title: "Estratégia Personalizada",
+      description: "Desenhamos um plano personalizado para sua empresa.",
       duration: "3-5 dias"
     },
     {
       icon: Zap,
       number: "03",
-      title: "Integração Multicanal",
-      description: "Conectamos WhatsApp, Instagram, email, SMS e CRM em uma única plataforma inteligente.",
+      title: "Integração Completa e Inteligente",
+      description: "Conectamos todos os seus canais e sistemas.",
       duration: "5-8 dias"
     },
     {
       icon: TrendingUp,
       number: "04",
       title: "Otimização Contínua",
-      description: "Monitoramos, ajustamos e evoluímos sua IA para máxima conversão. ROI garantido em 30 dias.",
+      description: "Relatórios semanais e suporte ilimitado segunda a segunda.",
       duration: "Sempre ativo"
     }
   ];
@@ -62,10 +62,10 @@ const HowItWorksSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 px-2">
-            Como Transformamos Seu <span className="text-[#FF7A00]">Negócio</span>
+            ✨ Transforme Seu Negócio em 4 Passos Simples
           </h2>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
-            Em 4 passos simples, sua empresa ganha um vendedor que nunca dorme
+            01 | Diagnóstico, 02 | Estratégia, 03 | Integração, 04 | Otimização
           </p>
         </div>
 

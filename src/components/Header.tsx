@@ -64,17 +64,18 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="lg:hidden text-white p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
+      </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-[#2D0B55]/95 backdrop-blur-md lg:hidden border-t border-white/10">
-            <nav className="flex flex-col p-4 space-y-4">
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="absolute top-full left-0 w-full bg-[#2D0B55]/95 backdrop-blur-md lg:hidden border-t border-white/10">
+          <nav className="flex flex-col p-4 space-y-4">
               <button onClick={() => scrollToSection('como-funciona')} className="text-white hover:text-[#FF7A00] text-left transition-colors py-2">
                 Como Funciona
               </button>
@@ -100,7 +101,6 @@ const Header: React.FC = () => {
             </nav>
           </div>
         )}
-      </div>
     </header>
   );
 };

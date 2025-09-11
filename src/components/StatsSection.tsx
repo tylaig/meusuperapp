@@ -54,10 +54,10 @@ const StatsSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 px-2">
-            Resultados Concretos
+            Resultados Reais e Comprovados
           </h2>
           <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto px-4">
-            Mais de <span className="text-[#FF7A00] font-bold">100 clientes</span> já transformaram suas vendas com nossa IA personalizada
+            Mais de <span className="text-[#FF7A00] font-bold">100 empresas</span> já experimentaram nossa IA avançada e personalizada
           </p>
         </div>
 

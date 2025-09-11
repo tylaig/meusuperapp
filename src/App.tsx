@@ -1,6 +1,8 @@
 import React from 'react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { WorkspaceProvider } from './contexts/WorkspaceContext';
 import LoginPage from './components/auth/LoginPage';
+import SignUpPage from './components/auth/SignUpPage';
 import DashboardPage from './components/dashboard/DashboardPage';
 import ServersPage from './components/dashboard/ServersPage';
 import ConnectionsPage from './components/dashboard/ConnectionsPage';
@@ -46,6 +48,11 @@ const AppContent: React.FC = () => {
 
   // Get current path
   const path = window.location.pathname;
+
+  // Show signup page
+  if (path === '/signup') {
+    return <SignUpPage />;
+  }
 
   // Show login page
   if (path === '/login') {
@@ -130,7 +137,9 @@ const AppContent: React.FC = () => {
 function App() {
   return (
     <AuthProvider>
-      <AppContent />
+      <WorkspaceProvider>
+        <AppContent />
+      </WorkspaceProvider>
     </AuthProvider>
   );
 }

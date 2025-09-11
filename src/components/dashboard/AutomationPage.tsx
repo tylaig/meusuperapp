@@ -1,7 +1,8 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { 
-  Plus, 
-  Play, 
+  Plus,
+  Play,
+  Pause,
   Save, 
   Download, 
   Upload, 

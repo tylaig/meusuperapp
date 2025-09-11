@@ -4,7 +4,7 @@ import { ArrowRight, Shield, Clock, Zap } from 'lucide-react';
 const CTASection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
-    whatsapp: '',
+    whatsApp: '',
     company: '',
     pain: ''
   });
@@ -49,7 +49,7 @@ const CTASection: React.FC = () => {
     setIsSubmitting(false);
     
     // Reset form and show success message
-    setFormData({ name: '', whatsapp: '', company: '', pain: '' });
+    setFormData({ name: '', whatsApp: '', company: '', pain: '' });
     alert('Sucesso! Entraremos em contato em até 2 horas.');
   };
 
@@ -75,10 +75,10 @@ const CTASection: React.FC = () => {
         }`}>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
             Sua Análise Gratuita em
-            <span className="block text-[#FF7A00]">Menos de 2 Minutos</span>
+            <span className="block text-[#FF7A00]">2 Minutos</span>
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-6 sm:mb-8 px-4">
-            100% Sem Compromisso • Sem Ligações Insistentes • Resultados Garantidos
+            Rápido, seguro, sem compromisso
           </p>
           
           {/* Trust indicators */}
@@ -125,8 +125,8 @@ const CTASection: React.FC = () => {
                   </label>
                   <input
                     type="tel"
-                    name="whatsapp"
-                    value={formData.whatsapp}
+                    name="whatsApp"
+                    value={formData.whatsApp}
                     onChange={handleInputChange}
                     required
                     className="w-full bg-white/10 border-2 border-white/20 rounded-xl px-4 sm:px-6 py-3 sm:py-4 text-white text-base sm:text-lg focus:border-[#FF7A00] focus:outline-none transition-colors duration-300 backdrop-blur-md placeholder-gray-400"
