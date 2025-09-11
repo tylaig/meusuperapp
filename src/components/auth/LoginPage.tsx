@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, Zap, ArrowRight, Chrome, Facebook } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
+import { supabase } from '../../lib/supabase';
 
 const LoginPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -292,9 +292,9 @@ const LoginPage: React.FC = () => {
           <div className="mt-8 text-center">
             <p className="text-gray-400 text-sm">
               Não tem uma conta?{' '}
-              <button className="text-[#FF7A00] hover:text-[#FF9500] font-semibold transition-colors duration-300">
+              <a href="/signup" className="text-[#FF7A00] hover:text-[#FF9500] font-semibold transition-colors duration-300">
                 Criar conta
-              </button>
+              </a>
             </p>
           </div>
         </div>
